@@ -1,0 +1,16 @@
+[
+  {"novakid_level": 0, "skill": "Vocabulary", "can_do": "Identify basic classroom objects", "complexity": 0.1},
+  {"novakid_level": 0, "skill": "Vocabulary", "can_do": "Name primary colors", "complexity": 0.2},
+  {"novakid_level": 0, "skill": "Speaking", "can_do": "Pronounce simple CVC words", "complexity": 0.2},
+  {"novakid_level": 1, "skill": "Vocabulary", "can_do": "Name family members", "complexity": 0.3},
+  {"novakid_level": 1, "skill": "Speaking", "can_do": "Introduce themselves with name and age", "complexity": 0.3},
+  {"novakid_level": 1, "skill": "Reading", "can_do": "Match words to pictures", "complexity": 0.3},
+  {"novakid_level": 2, "skill": "Grammar", "can_do": "Use present simple correctly", "complexity": 0.4},
+  {"novakid_level": 2, "skill": "Reading", "can_do": "Understand simple sentences", "complexity": 0.4},
+  {"novakid_level": 3, "skill": "Grammar", "can_do": "Use past simple tense", "complexity": 0.5},
+  {"novakid_level": 3, "skill": "Speaking", "can_do": "Describe daily routines", "complexity": 0.5},
+  {"novakid_level": 4, "skill": "Grammar", "can_do": "Use present perfect tense", "complexity": 0.6},
+  {"novakid_level": 4, "skill": "Reading", "can_do": "Understand short paragraphs", "complexity": 0.6},
+  {"novakid_level": 5, "skill": "Grammar", "can_do": "Use conditional sentences", "complexity": 0.7},
+  {"novakid_level": 5, "skill": "Speaking", "can_do": "Express opinions fluently", "complexity": 0.7}
+]

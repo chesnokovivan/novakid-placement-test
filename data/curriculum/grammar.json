@@ -1,0 +1,12 @@
+[
+  {"novakid_level": 0, "topic": "be verb", "examples": "I am, you are, he is", "complexity": 0.1},
+  {"novakid_level": 1, "topic": "present simple", "examples": "I like, she likes, we play", "complexity": 0.3},
+  {"novakid_level": 2, "topic": "articles", "examples": "a cat, an apple, the sun", "complexity": 0.4},
+  {"novakid_level": 2, "topic": "plural forms", "examples": "cats, children, feet", "complexity": 0.4},
+  {"novakid_level": 3, "topic": "past simple", "examples": "went, played, was/were", "complexity": 0.5},
+  {"novakid_level": 3, "topic": "comparatives", "examples": "bigger, more beautiful", "complexity": 0.5},
+  {"novakid_level": 4, "topic": "present perfect", "examples": "have done, has been", "complexity": 0.6},
+  {"novakid_level": 4, "topic": "modal verbs", "examples": "can, should, must", "complexity": 0.6},
+  {"novakid_level": 5, "topic": "conditionals", "examples": "if...then, would have", "complexity": 0.7},
+  {"novakid_level": 5, "topic": "passive voice", "examples": "is done, was made", "complexity": 0.7}
+]

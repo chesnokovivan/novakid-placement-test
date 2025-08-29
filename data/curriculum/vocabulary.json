@@ -1,0 +1,16 @@
+[
+  {"novakid_level": 0, "topic": "colors", "words": "red, blue, yellow, green", "complexity": 0.1},
+  {"novakid_level": 0, "topic": "numbers", "words": "one, two, three, four, five", "complexity": 0.1},
+  {"novakid_level": 0, "topic": "classroom", "words": "pen, book, desk, chair", "complexity": 0.2},
+  {"novakid_level": 1, "topic": "family", "words": "mother, father, sister, brother", "complexity": 0.3},
+  {"novakid_level": 1, "topic": "animals", "words": "cat, dog, bird, fish", "complexity": 0.3},
+  {"novakid_level": 1, "topic": "food", "words": "apple, bread, milk, water", "complexity": 0.3},
+  {"novakid_level": 2, "topic": "daily activities", "words": "wake up, brush teeth, go to school", "complexity": 0.4},
+  {"novakid_level": 2, "topic": "emotions", "words": "happy, sad, angry, excited", "complexity": 0.4},
+  {"novakid_level": 3, "topic": "hobbies", "words": "reading, swimming, playing guitar", "complexity": 0.5},
+  {"novakid_level": 3, "topic": "weather", "words": "sunny, rainy, cloudy, windy", "complexity": 0.5},
+  {"novakid_level": 4, "topic": "professions", "words": "doctor, teacher, engineer, artist", "complexity": 0.6},
+  {"novakid_level": 4, "topic": "environment", "words": "pollution, recycling, conservation", "complexity": 0.6},
+  {"novakid_level": 5, "topic": "abstract concepts", "words": "democracy, justice, innovation", "complexity": 0.7},
+  {"novakid_level": 5, "topic": "idioms", "words": "piece of cake, break the ice", "complexity": 0.7}
+]

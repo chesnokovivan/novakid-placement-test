@@ -1,0 +1,57 @@
+{
+  "levels": [
+    {
+      "novakid_level": 0,
+      "cefr_mapping": "pre-A1",
+      "description": "Complete beginner",
+      "mechanics": ["word-pronunciation-practice"]
+    },
+    {
+      "novakid_level": 1,
+      "cefr_mapping": "A1",
+      "description": "Basic vocabulary and simple phrases",
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts"]
+    },
+    {
+      "novakid_level": 2,
+      "cefr_mapping": "A1+",
+      "description": "Expanded vocabulary and basic grammar",
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+    },
+    {
+      "novakid_level": 3,
+      "cefr_mapping": "A2",
+      "description": "Simple conversations and grammar",
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+    },
+    {
+      "novakid_level": 4,
+      "cefr_mapping": "B1",
+      "description": "Complex sentences and varied vocabulary",
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+    },
+    {
+      "novakid_level": 5,
+      "cefr_mapping": "B2",
+      "description": "Fluent communication and complex grammar",
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+    }
+  ],
+  "mechanic_details": {
+    "multiple-choice-text-text": {
+      "min_level": 2,
+      "skills": ["Grammar", "Reading"],
+      "description": "Choose correct word to fill the gap"
+    },
+    "word-pronunciation-practice": {
+      "min_level": 0,
+      "skills": ["Speaking", "Pronunciation"],
+      "description": "Practice pronouncing words"
+    },
+    "image-single-choice-from-texts": {
+      "min_level": 1,
+      "skills": ["Reading", "Vocabulary Recognition"],
+      "description": "Choose text that matches image"
+    }
+  }
+}
