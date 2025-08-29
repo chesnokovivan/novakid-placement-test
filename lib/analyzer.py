@@ -23,12 +23,21 @@ def analyze_results(test_history: List[Dict], questions: Dict) -> Dict:
             result_text = result_text.split('```')[1].split('```')[0]
         
         analysis = json.loads(result_text)
+        
+        # Add success flag for UI feedback
+        analysis['_analysis_method'] = 'ai'
         return analysis
         
     except Exception as e:
-        print(f"Error in LLM analysis: {e}")
-        # Fallback to simple rule-based analysis
-        return simple_analysis(test_history)
+        error_msg = str(e)
+        print(f"Error in LLM analysis: {error_msg}")
+        
+        # Enhanced fallback with error info
+        fallback_result = simple_analysis(test_history)
+        fallback_result['_analysis_method'] = 'fallback'
+        fallback_result['_analysis_error'] = error_msg
+        
+        return fallback_result
 
 def create_analysis_prompt(test_history: List[Dict], questions: Dict) -> str:
     """Create prompt for LLM analysis"""

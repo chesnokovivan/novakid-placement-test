@@ -132,15 +132,16 @@ def process_answer(answer):
     # Check if test should continue
     if len(st.session_state.test_history) >= QUESTIONS_PER_TEST:
         complete_test()
+        return
+    
+    # Get next question
+    next_question = st.session_state.adaptive_engine.get_next_question()
+    if next_question:
+        st.session_state.current_question = next_question
+        st.session_state.question_number += 1
+        st.session_state.answer_submitted = False
     else:
-        # Get next question
-        next_question = st.session_state.adaptive_engine.get_next_question()
-        if next_question:
-            st.session_state.current_question = next_question
-            st.session_state.question_number += 1
-            st.session_state.answer_submitted = False
-        else:
-            complete_test()
+        complete_test()
     
     # Brief pause to show feedback
     import time
@@ -163,6 +164,7 @@ def complete_test():
         )
     except Exception as e:
         st.error(f"Error analyzing results: {e}")
+        print(f"Analysis error details: {e}")
         # Fallback to basic results
         correct_count = sum(1 for h in st.session_state.test_history if h['correct'])
         accuracy = correct_count / len(st.session_state.test_history)
@@ -288,8 +290,18 @@ def show_results_screen():
         
         st.markdown("---")
         
-        # Level justification
+        # Level justification with analysis method feedback
         st.subheader("📊 Placement Analysis")
+        
+        # Show analysis method info
+        analysis_method = st.session_state.test_results.get('_analysis_method', 'unknown')
+        if analysis_method == 'fallback':
+            st.warning("⚠️ AI analysis unavailable - showing basic placement based on accuracy")
+            error_info = st.session_state.test_results.get('_analysis_error', 'Unknown error')
+            st.caption(f"Analysis error: {error_info}")
+        elif analysis_method == 'ai':
+            st.success("✨ Analysis powered by AI")
+        
         st.info(placement['level_justification'])
         
         # Skill breakdown if available
