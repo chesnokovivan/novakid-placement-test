@@ -42,7 +42,15 @@ The system follows a modular architecture:
 
 ### Adaptive Algorithm
 
-The AdaptiveEngine uses a calibration phase (3 initial questions across levels) followed by adaptive selection based on performance windows. Level adjustments occur when accuracy consistently exceeds 80% (level up) or falls below 30% (level down).
+The AdaptiveEngine uses a calibration phase (3 randomized questions across levels with mechanic diversity) followed by performance-responsive adaptive selection. Features include:
+
+- **Mechanic Diversity:** Tracks recent question types to prevent boring streaks
+- **Dynamic Exploration:** High performers (90%+) get expanded level range testing  
+- **Aggressive Progression:** Perfect performance (100% over 4+ questions) triggers 2-level jumps
+- **Ceiling Exploration:** End-test push ensures advanced students get Level 5 assessment
+- **Standard Adjustments:** 80% accuracy (level up), 30% accuracy (level down)
+
+This ensures proper placement from beginners to advanced students while maintaining engaging variety.
 
 ## Key Configuration
 

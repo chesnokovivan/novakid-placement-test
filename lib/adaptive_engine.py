@@ -84,7 +84,7 @@ class AdaptiveEngine:
             ]
             
             if candidates:
-                question = candidates[0]
+                question = random.choice(candidates)
                 self.used_questions.add(question['id'])
                 question['assigned_level'] = level
                 question['is_calibration'] = True
