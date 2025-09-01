@@ -1557,6 +1557,156 @@
       "skill": "Grammar",
       "difficulty": 0.65,
       "grammar_point": "present perfect (experience)"
+    },
+    {
+      "id": "L4_MC_011",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "I ___ my homework already, so I can play now.",
+      "options": [
+        "do",
+        "did",
+        "have done",
+        "am doing"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.65,
+      "grammar_point": "present perfect"
+    },
+    {
+      "id": "L4_MC_012",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "It's getting late. You ___ go to bed soon.",
+      "options": [
+        "can",
+        "must",
+        "should",
+        "have"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "modal verb - advice"
+    },
+    {
+      "id": "L4_MC_013",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "My friend Sarah ___ never been to the ocean.",
+      "options": [
+        "have",
+        "is",
+        "has",
+        "was"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "present perfect third person"
+    },
+    {
+      "id": "L4_MC_014",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "You ___ wear a helmet when you ride your bike. It's for safety.",
+      "options": [
+        "can",
+        "must",
+        "may",
+        "do"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "modal verb - obligation"
+    },
+    {
+      "id": "L4_MC_015",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "A person who designs buildings and bridges is an ___.",
+      "options": [
+        "artist",
+        "doctor",
+        "engineer",
+        "teacher"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.65,
+      "grammar_point": "vocabulary: professions"
+    },
+    {
+      "id": "L4_MC_016",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "To help stop air ___, we can walk or use bicycles more often.",
+      "options": [
+        "recycling",
+        "conservation",
+        "pollution",
+        "planet"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.7,
+      "grammar_point": "vocabulary: environment"
+    },
+    {
+      "id": "L4_MC_017",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "They ___ lunch yet, so they are very hungry.",
+      "options": [
+        "haven't eaten",
+        "didn't eat",
+        "don't eat",
+        "aren't eating"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.75,
+      "grammar_point": "present perfect negative"
+    },
+    {
+      "id": "L4_MC_018",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Look at that bird! It ___ fly so high in the sky.",
+      "options": [
+        "must",
+        "should",
+        "can",
+        "has to"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "modal verb - ability"
+    },
+    {
+      "id": "L4_MC_019",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "___ you ever visited another country on holiday?",
+      "options": [
+        "Did",
+        "Have",
+        "Are",
+        "Do"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "present perfect question"
+    },
+    {
+      "id": "L4_MC_020",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Putting plastic bottles in a special bin for ___ helps protect the environment.",
+      "options": [
+        "pollution",
+        "conservation",
+        "recycling",
+        "doctor"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.75,
+      "grammar_point": "vocabulary: environment"
     }
   ],
   "5": [
@@ -1959,6 +2109,156 @@
       "skill": "Grammar",
       "difficulty": 0.75,
       "grammar_point": "third conditional passive"
+    },
+    {
+      "id": "L5_MC_011",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "If I ___ harder for the test, I would have gotten a better grade.",
+      "options": [
+        "study",
+        "have studied",
+        "had studied",
+        "would study"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.75,
+      "grammar_point": "third conditional"
+    },
+    {
+      "id": "L5_MC_012",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The new library ___ by a famous architect last year.",
+      "options": [
+        "was designed",
+        "designed",
+        "is designed",
+        "has designed"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.65,
+      "grammar_point": "past passive"
+    },
+    {
+      "id": "L5_MC_013",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The math homework was so easy, it was a ___.",
+      "options": [
+        "piece of cake",
+        "heavy rock",
+        "big storm",
+        "long story"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary",
+      "difficulty": 0.7,
+      "grammar_point": "idioms"
+    },
+    {
+      "id": "L5_MC_014",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "If he had a superpower, he ___ to visit other planets.",
+      "options": [
+        "will travel",
+        "would travel",
+        "travels",
+        "has traveled"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "second conditional"
+    },
+    {
+      "id": "L5_MC_015",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "In our class election, we practiced ___ by voting for our class president.",
+      "options": [
+        "justice",
+        "democracy",
+        "innovation",
+        "patience"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary",
+      "difficulty": 0.75,
+      "grammar_point": "abstract concepts"
+    },
+    {
+      "id": "L5_MC_016",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Today, many popular video games ___ by large teams of artists and programmers.",
+      "options": [
+        "are created",
+        "create",
+        "is created",
+        "was created"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.68,
+      "grammar_point": "present passive"
+    },
+    {
+      "id": "L5_MC_017",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "She would have won the race if she ___ at the very end.",
+      "options": [
+        "hadn't stumbled",
+        "didn't stumble",
+        "hasn't stumbled",
+        "wouldn't stumble"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.78,
+      "grammar_point": "third conditional"
+    },
+    {
+      "id": "L5_MC_018",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The new student was very shy, so I told a funny joke to ___.",
+      "options": [
+        "spill the beans",
+        "hit the books",
+        "break the ice",
+        "call it a day"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.72,
+      "grammar_point": "idioms"
+    },
+    {
+      "id": "L5_MC_019",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The referee made sure there was ___ in the game by ensuring everyone followed the rules fairly.",
+      "options": [
+        "opinion",
+        "courage",
+        "memory",
+        "justice"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary",
+      "difficulty": 0.7,
+      "grammar_point": "abstract concepts"
+    },
+    {
+      "id": "L5_MC_020",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "According to the rules, all bicycles ___ in the designated area.",
+      "options": [
+        "can leave",
+        "must be left",
+        "have left",
+        "were leaving"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.8,
+      "grammar_point": "passive voice with modals"
     }
   ]
 }

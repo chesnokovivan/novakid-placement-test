@@ -18,10 +18,10 @@ class AdaptiveEngine:
         self.calibration_count = 0
         self.recent_mechanics = []  # Track last few mechanics for diversity
         
-        # Mechanic availability by level - balanced across all levels
+        # Mechanic availability by level - matches curriculum constraints
         self.mechanic_availability = {
-            0: ['word-pronunciation-practice', 'image-single-choice-from-texts'],
-            1: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
+            0: ['word-pronunciation-practice'],
+            1: ['word-pronunciation-practice', 'image-single-choice-from-texts'],
             2: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
             3: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
             4: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
@@ -73,9 +73,9 @@ class AdaptiveEngine:
             level = calibration_levels[self.calibration_count]
             level_questions = self.question_bank.get(str(level), [])
             
-            # Use diverse mechanics for calibration - cycle through them
-            all_calibration_mechanics = ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text']
-            preferred_mechanic = all_calibration_mechanics[self.calibration_count % len(all_calibration_mechanics)]
+            # Use diverse mechanics for calibration - respect level constraints
+            level_mechanics = self.mechanic_availability[level]
+            preferred_mechanic = level_mechanics[self.calibration_count % len(level_mechanics)]
             calibration_mechanics = [preferred_mechanic]
             candidates = [
                 q for q in level_questions 
