@@ -1,0 +1,335 @@
+{
+  "student_name": "Zhanna",
+  "student_age": 7,
+  "timestamp": "20250901_144034",
+  "test_history": [
+    {
+      "question": {
+        "id": "L0_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "pen",
+        "phonetic": "/pen/",
+        "image_description": "A simple red pen used for writing.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "noun",
+        "assigned_level": 0,
+        "is_calibration": true
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L1_IS_002",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A brown dog wagging its tail",
+        "options": [
+          "cat",
+          "dog",
+          "bird",
+          "fish"
+        ],
+        "correct_answer": 1,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.2,
+        "topic": "animals",
+        "assigned_level": 1,
+        "is_calibration": true
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_MC_009",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "There are many ___ in the park.",
+        "options": [
+          "child",
+          "children",
+          "childs",
+          "childrens"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.44,
+        "grammar_point": "plural forms irregular",
+        "assigned_level": 2,
+        "is_calibration": true
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "apple",
+        "phonetic": "/\u02c8\u00e6p\u0259l/",
+        "image_description": "A shiny red apple.",
+        "skill": "Pronunciation",
+        "difficulty": 0.3,
+        "word_type": "noun",
+        "assigned_level": 2
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_003",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "artist",
+        "phonetic": "/\u02c8\u0251\u02d0rt\u026ast/",
+        "image_description": "A person holding a palette and a paintbrush, painting on a canvas.",
+        "skill": "Pronunciation",
+        "difficulty": 0.6,
+        "word_type": "noun",
+        "assigned_level": 4
+      },
+      "answer": false,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_IS_004",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A girl kicking a soccer ball into a goal. A calendar in the corner shows 'YESTERDAY'.",
+        "options": [
+          "She plays football now.",
+          "She played football yesterday.",
+          "She will play football tomorrow.",
+          "She is play football."
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.5,
+        "grammar_point": "past simple",
+        "assigned_level": 3
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_MC_002",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "They ___ happy to see their friends at the party.",
+        "options": [
+          "is",
+          "am",
+          "was",
+          "were"
+        ],
+        "correct_answer": 3,
+        "skill": "Grammar",
+        "difficulty": 0.4,
+        "grammar_point": "past simple be",
+        "assigned_level": 3
+      },
+      "answer": 3,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "sunny",
+        "phonetic": "/\u02c8s\u028cni/",
+        "image_description": "Bright sun in the sky with a few small clouds",
+        "skill": "Pronunciation",
+        "difficulty": 0.4,
+        "word_type": "adjective",
+        "assigned_level": 3
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_003",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "justice",
+        "phonetic": "/\u02c8d\u0292\u028cst\u026as/",
+        "image_description": "A set of balanced scales, representing the scales of justice.",
+        "skill": "Pronunciation",
+        "difficulty": 0.65,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_IS_003",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A girl holding an umbrella, looking up at a dark, cloudy sky.",
+        "options": [
+          "If it rains, she will use her umbrella.",
+          "If it rains, she would use her umbrella.",
+          "If it had rained, she will use her umbrella.",
+          "If it rained, she used her umbrella."
+        ],
+        "correct_answer": 0,
+        "skill": "Grammar",
+        "difficulty": 0.7,
+        "topic": "conditionals",
+        "assigned_level": 5
+      },
+      "answer": 0,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_MC_003",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "The final exam was surprisingly easy. It was a ___!",
+        "options": [
+          "heavy rain",
+          "piece of cake",
+          "big apple",
+          "night owl"
+        ],
+        "correct_answer": 1,
+        "skill": "Vocabulary",
+        "difficulty": 0.7,
+        "topic": "idioms",
+        "assigned_level": 5
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_006",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "decision",
+        "phonetic": "/d\u026a\u02c8s\u026a\u0292n/",
+        "image_description": "A road sign with arrows pointing in two different directions.",
+        "skill": "Pronunciation",
+        "difficulty": 0.7,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "opinion",
+        "phonetic": "/\u0259\u02c8p\u026anj\u0259n/",
+        "image_description": "A cartoon child with a speech bubble containing a thumbs-up icon.",
+        "skill": "Pronunciation",
+        "difficulty": 0.6,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_IS_004",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "An image of the famous Mona Lisa painting in a museum.",
+        "options": [
+          "Leonardo da Vinci was painted by the Mona Lisa.",
+          "The Mona Lisa has painted by Leonardo da Vinci.",
+          "The Mona Lisa painted Leonardo da Vinci.",
+          "The Mona Lisa was painted by Leonardo da Vinci."
+        ],
+        "correct_answer": 3,
+        "skill": "Grammar",
+        "difficulty": 0.7,
+        "topic": "passive voice",
+        "assigned_level": 5
+      },
+      "answer": 3,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_MC_005",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "Every year, a special award ___ to the student with the best science project.",
+        "options": [
+          "is given",
+          "gives",
+          "was given",
+          "gave"
+        ],
+        "correct_answer": 0,
+        "skill": "Grammar",
+        "difficulty": 0.71,
+        "grammar_point": "passive voice present simple",
+        "assigned_level": 5
+      },
+      "answer": 0,
+      "correct": true,
+      "response_time": 0
+    }
+  ],
+  "analysis": {
+    "placement": {
+      "novakid_level": 5,
+      "confidence": 0.9,
+      "cefr_equivalent": "B2",
+      "level_justification": "The student demonstrated mastery by correctly answering all 7 questions at Level 5. The single incorrect answer at Level 4 appears to be an outlier when weighed against the consistent success at the highest tested level."
+    },
+    "skill_analysis": {
+      "vocabulary": {
+        "score": 1.0,
+        "evidence": [
+          "Perfect score on all vocabulary and vocabulary recognition tasks.",
+          "Demonstrated understanding of words at both basic (Level 1) and advanced (Level 5) tiers."
+        ]
+      },
+      "pronunciation": {
+        "score": 0.86,
+        "evidence": [
+          "Correctly pronounced 6 out of 7 words, including several complex Level 5 words.",
+          "The single error on the entire test was on one Level 4 pronunciation item, suggesting a very specific and isolated difficulty."
+        ]
+      },
+      "grammar": {
+        "score": 1.0,
+        "evidence": [
+          "Perfect score on all grammar questions across Levels 2, 3, and 5.",
+          "Shows a strong command of various grammatical structures required for complex sentences."
+        ]
+      }
+    },
+    "recommendations": {
+      "immediate_focus": [
+        "Identify and practice the specific sound or word pattern from the single failed pronunciation question.",
+        "Begin working with B2-level thematic vocabulary and idiomatic expressions."
+      ],
+      "strengths_to_build_on": [
+        "Exceptional grammar foundation which can be used to master more nuanced communication.",
+        "Reliable and accurate word pronunciation for most sounds."
+      ],
+      "suggested_starting_point": "Begin at Novakid Level 5 to ensure the student is appropriately challenged and engaged.",
+      "estimated_progress": "Focus on consolidating B2 skills and fluency, likely ready to explore C1-level concepts in 8-10 weeks."
+    },
+    "_analysis_method": "ai"
+  },
+  "final_level": 5
+}

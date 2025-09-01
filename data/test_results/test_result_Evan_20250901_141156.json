@@ -1,0 +1,330 @@
+{
+  "student_name": "Evan",
+  "student_age": 7,
+  "timestamp": "20250901_141156",
+  "test_history": [
+    {
+      "question": {
+        "id": "L0_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "book",
+        "phonetic": "/b\u028ak/",
+        "image_description": "A colorful children's storybook that is open.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "noun",
+        "assigned_level": 0,
+        "is_calibration": true
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L1_IS_002",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A brown dog wagging its tail",
+        "options": [
+          "cat",
+          "dog",
+          "bird",
+          "fish"
+        ],
+        "correct_answer": 1,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.2,
+        "topic": "animals",
+        "assigned_level": 1,
+        "is_calibration": true
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_MC_006",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "Look! It's ___ orange.",
+        "options": [
+          "a",
+          "some",
+          "the",
+          "an"
+        ],
+        "correct_answer": 3,
+        "skill": "Grammar",
+        "difficulty": 0.41,
+        "grammar_point": "articles",
+        "assigned_level": 2,
+        "is_calibration": true
+      },
+      "answer": 0,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_005",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "blue",
+        "phonetic": "/blu\u02d0/",
+        "image_description": "A simple blue ball.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "adjective",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_006",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "two",
+        "phonetic": "/tu\u02d0/",
+        "image_description": "The number 2 next to two small birds.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "number",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_003",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "one",
+        "phonetic": "/w\u028cn/",
+        "image_description": "The number 1 with a birthday candle on top.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "number",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_IS_001",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A bright sun in a clear blue sky with a few small white clouds.",
+        "options": [
+          "It's rainy.",
+          "It's windy.",
+          "It's sunny.",
+          "It's cloudy."
+        ],
+        "correct_answer": 2,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.3,
+        "topic": "weather",
+        "assigned_level": 3
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_MC_002",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "The Harry Potter books ___ by J.K. Rowling.",
+        "options": [
+          "wrote",
+          "were written",
+          "have written",
+          "was writing"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.69,
+        "grammar_point": "passive voice past simple",
+        "assigned_level": 5
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "opinion",
+        "phonetic": "/\u0259\u02c8p\u026anj\u0259n/",
+        "image_description": "A cartoon child with a speech bubble containing a thumbs-up icon.",
+        "skill": "Pronunciation",
+        "difficulty": 0.6,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_006",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "decision",
+        "phonetic": "/d\u026a\u02c8s\u026a\u0292n/",
+        "image_description": "A road sign with arrows pointing in two different directions.",
+        "skill": "Pronunciation",
+        "difficulty": 0.7,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_IS_005",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A cartoon drawing of the scales of justice, perfectly balanced.",
+        "options": [
+          "This is a symbol of innovation.",
+          "This is a symbol of democracy.",
+          "This is a symbol of justice.",
+          "This is a symbol of friendship."
+        ],
+        "correct_answer": 2,
+        "skill": "Vocabulary",
+        "difficulty": 0.71,
+        "topic": "abstract concepts",
+        "assigned_level": 5
+      },
+      "answer": 1,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_MC_005",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "___ you ever visited another country with your family?",
+        "options": [
+          "Did",
+          "Are",
+          "Have",
+          "Do"
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.61,
+        "grammar_point": "present perfect (questions)",
+        "assigned_level": 4
+      },
+      "answer": 0,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_002",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "should",
+        "phonetic": "/\u0283\u028ad/",
+        "image_description": "A checklist with a green checkmark next to an item.",
+        "skill": "Pronunciation",
+        "difficulty": 0.55,
+        "word_type": "modal verb",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "teacher",
+        "phonetic": "/\u02c8ti\u02d0t\u0283\u0259r/",
+        "image_description": "A person standing in front of a chalkboard teaching students.",
+        "skill": "Pronunciation",
+        "difficulty": 0.55,
+        "word_type": "noun",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_IS_002",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A young boy proudly holding up a colorful drawing he has just completed.",
+        "options": [
+          "He is starting his drawing.",
+          "He has finished his drawing.",
+          "He have finished his drawing.",
+          "He will finish his drawing."
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.55,
+        "topic": "present perfect",
+        "assigned_level": 4
+      },
+      "answer": 0,
+      "correct": false,
+      "response_time": 0
+    }
+  ],
+  "analysis": {
+    "placement": {
+      "novakid_level": 2,
+      "confidence": 0.7,
+      "cefr_equivalent": "A1+",
+      "level_justification": "The student shows excellent pronunciation and good basic vocabulary (passing L1 and L3 tasks), but demonstrates a significant weakness in grammar, failing tasks at Level 2 and Level 4. Placement at Level 2 is necessary to build a solid grammatical foundation before advancing."
+    },
+    "skill_analysis": {
+      "vocabulary": {
+        "score": 0.67,
+        "evidence": [
+          "Correctly answered vocabulary questions at Level 1 and Level 3.",
+          "Failed the Level 5 vocabulary question, suggesting difficulty with more advanced or abstract words."
+        ]
+      },
+      "pronunciation": {
+        "score": 1.0,
+        "evidence": [
+          "Achieved 100% accuracy on all 8 pronunciation tasks, spanning from Level 0 to Level 5.",
+          "This is a clear area of strength and indicates a good ear for the language."
+        ]
+      },
+      "grammar": {
+        "score": 0.25,
+        "evidence": [
+          "Failed grammar questions at both Level 2 and Level 4, indicating a gap in foundational knowledge.",
+          "A single correct answer at Level 5 is inconsistent with other results and likely an outlier."
+        ]
+      }
+    },
+    "recommendations": {
+      "immediate_focus": [
+        "Concentrate on Level 2 grammar concepts, such as present simple/continuous and basic sentence structure.",
+        "Systematically build vocabulary related to everyday topics and actions."
+      ],
+      "strengths_to_build_on": [
+        "Leverage the excellent pronunciation to encourage speaking and build confidence.",
+        "Use the solid basic vocabulary as a base for practicing new grammar rules in context."
+      ],
+      "suggested_starting_point": "Begin at Novakid Level 2 to directly address and correct the foundational grammar weaknesses.",
+      "estimated_progress": "Ready for Level 3 in 6-8 weeks with consistent practice, particularly in grammar."
+    },
+    "_analysis_method": "ai"
+  },
+  "final_level": 5
+}

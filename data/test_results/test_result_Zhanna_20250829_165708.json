@@ -1,0 +1,336 @@
+{
+  "student_name": "Zhanna",
+  "student_age": 12,
+  "timestamp": "20250829_165708",
+  "test_history": [
+    {
+      "question": {
+        "id": "L0_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "pen",
+        "phonetic": "/pen/",
+        "image_description": "A simple red pen used for writing.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "noun",
+        "assigned_level": 0,
+        "is_calibration": true
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L1_IS_001",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A single red apple",
+        "options": [
+          "apple",
+          "milk",
+          "bread",
+          "water"
+        ],
+        "correct_answer": 0,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.2,
+        "topic": "food",
+        "assigned_level": 1,
+        "is_calibration": true
+      },
+      "answer": 0,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_MC_001",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "I see ___ big, red car.",
+        "options": [
+          "a",
+          "an",
+          "the",
+          "some"
+        ],
+        "correct_answer": 0,
+        "skill": "Grammar",
+        "difficulty": 0.38,
+        "grammar_point": "articles",
+        "assigned_level": 2,
+        "is_calibration": true
+      },
+      "answer": 0,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L1_WP_002",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "dog",
+        "phonetic": "/d\u0252\u0261/",
+        "image_description": "A pet animal that says 'woof' and wags its tail.",
+        "skill": "Pronunciation",
+        "difficulty": 0.3,
+        "word_type": "noun",
+        "assigned_level": 1
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "apple",
+        "phonetic": "/\u02c8\u00e6p\u0259l/",
+        "image_description": "A shiny red apple.",
+        "skill": "Pronunciation",
+        "difficulty": 0.3,
+        "word_type": "noun",
+        "assigned_level": 2
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_IS_003",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A large elephant next to a small mouse.",
+        "options": [
+          "The mouse is bigger.",
+          "The elephant is smaller.",
+          "The elephant is bigger.",
+          "The mouse is faster."
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.4,
+        "grammar_point": "comparatives",
+        "assigned_level": 3
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_MC_004",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "To help the environment, we ___ try to reduce pollution by walking more.",
+        "options": [
+          "has to",
+          "can",
+          "must be",
+          "have"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.6,
+        "grammar_point": "modal verbs (suggestion)",
+        "assigned_level": 4
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "finished",
+        "phonetic": "/\u02c8f\u026an\u026a\u0283t/",
+        "image_description": "A child smiling and showing a completed drawing.",
+        "skill": "Pronunciation",
+        "difficulty": 0.6,
+        "word_type": "verb (past participle)",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "teacher",
+        "phonetic": "/\u02c8ti\u02d0t\u0283\u0259r/",
+        "image_description": "A person standing in front of a chalkboard teaching students.",
+        "skill": "Pronunciation",
+        "difficulty": 0.55,
+        "word_type": "noun",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_IS_001",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A woman wearing a white coat and a stethoscope around her neck, smiling.",
+        "options": [
+          "She is an engineer.",
+          "She is a teacher.",
+          "She is a doctor.",
+          "She is an artist."
+        ],
+        "correct_answer": 2,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.5,
+        "topic": "professions",
+        "assigned_level": 4
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_MC_002",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "My dad is an engineer. He ___ many bridges in his career.",
+        "options": [
+          "has built",
+          "have built",
+          "is building",
+          "builds"
+        ],
+        "correct_answer": 0,
+        "skill": "Grammar",
+        "difficulty": 0.59,
+        "grammar_point": "present perfect third person",
+        "assigned_level": 4
+      },
+      "answer": 0,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_005",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "engineer",
+        "phonetic": "/\u02ccend\u0292\u026a\u02c8n\u026ar/",
+        "image_description": "A person wearing a hard hat and looking at blueprints for a building.",
+        "skill": "Pronunciation",
+        "difficulty": 0.65,
+        "word_type": "noun",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_008",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "traveled",
+        "phonetic": "/\u02c8tr\u00e6vld/",
+        "image_description": "A suitcase with travel stickers next to a globe and a passport.",
+        "skill": "Pronunciation",
+        "difficulty": 0.7,
+        "word_type": "verb (past participle)",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_IS_004",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A traffic sign that shows a bicycle inside a red circle with a red line through it.",
+        "options": [
+          "You can ride a bike here.",
+          "You should ride a bike here.",
+          "You must not ride a bike here.",
+          "You have ridden a bike here."
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.6,
+        "topic": "modal verbs",
+        "assigned_level": 4
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_MC_001",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "I ___ my homework already, so I can play outside.",
+        "options": [
+          "has finished",
+          "have finished",
+          "am finishing",
+          "did finish"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.58,
+        "grammar_point": "present perfect",
+        "assigned_level": 4
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    }
+  ],
+  "analysis": {
+    "placement": {
+      "novakid_level": 4,
+      "confidence": 0.9,
+      "cefr_equivalent": "B1",
+      "level_justification": "The student answered every question correctly, including all nine questions at Level 4. This demonstrates a strong command of the skills required for this level. The test did not present any Level 5 questions to find the student's upper limit."
+    },
+    "skill_analysis": {
+      "vocabulary": {
+        "score": 1.0,
+        "evidence": [
+          "Perfect score on all vocabulary recognition tasks.",
+          "Successfully identified vocabulary at the Level 4 (B1) complexity."
+        ]
+      },
+      "pronunciation": {
+        "score": 1.0,
+        "evidence": [
+          "Answered all pronunciation questions correctly across all levels (0, 1, 2, 4).",
+          "Demonstrates consistent and accurate pronunciation of varied vocabulary."
+        ]
+      },
+      "grammar": {
+        "score": 1.0,
+        "evidence": [
+          "Flawless performance on all grammar questions up to and including Level 4.",
+          "Shows a solid understanding of sentence structure and grammatical rules tested at the B1 level."
+        ]
+      }
+    },
+    "recommendations": {
+      "immediate_focus": [
+        "Introduce more complex sentence structures and advanced vocabulary (Level 5 content).",
+        "Assess conversational fluency and spontaneous speech, as this was not measured by the test."
+      ],
+      "strengths_to_build_on": [
+        "Excellent grasp of core grammar and vocabulary.",
+        "Strong and clear pronunciation foundation.",
+        "High accuracy across all tested skills."
+      ],
+      "suggested_starting_point": "Begin at Novakid Level 4 to confirm mastery in a live lesson and prepare for a rapid transition to Level 5.",
+      "estimated_progress": "The student is likely ready for Level 5 material and may progress within 2-4 weeks, depending on their conversational ability."
+    },
+    "_analysis_method": "ai"
+  },
+  "final_level": 5
+}

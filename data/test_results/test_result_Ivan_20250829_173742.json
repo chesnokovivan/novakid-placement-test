@@ -1,0 +1,330 @@
+{
+  "student_name": "Ivan",
+  "student_age": 10,
+  "timestamp": "20250829_173742",
+  "test_history": [
+    {
+      "question": {
+        "id": "L0_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "book",
+        "phonetic": "/b\u028ak/",
+        "image_description": "A colorful children's storybook that is open.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "noun",
+        "assigned_level": 0,
+        "is_calibration": true
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L1_IS_006",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A man smiling and holding a baby",
+        "options": [
+          "mother",
+          "father",
+          "sister",
+          "brother"
+        ],
+        "correct_answer": 1,
+        "skill": "Vocabulary Recognition",
+        "difficulty": 0.3,
+        "topic": "family",
+        "assigned_level": 1,
+        "is_calibration": true
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L2_MC_004",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "My friend has two ___.",
+        "options": [
+          "cat",
+          "cats",
+          "cates",
+          "caties"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.4,
+        "grammar_point": "plural forms",
+        "assigned_level": 2,
+        "is_calibration": true
+      },
+      "answer": 2,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_006",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "two",
+        "phonetic": "/tu\u02d0/",
+        "image_description": "The number 2 next to two small birds.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "number",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "pen",
+        "phonetic": "/pen/",
+        "image_description": "A simple red pen used for writing.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "noun",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L0_WP_005",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "blue",
+        "phonetic": "/blu\u02d0/",
+        "image_description": "A simple blue ball.",
+        "skill": "Pronunciation",
+        "difficulty": 0.1,
+        "word_type": "adjective",
+        "assigned_level": 0
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L3_IS_003",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A large elephant next to a small mouse.",
+        "options": [
+          "The mouse is bigger.",
+          "The elephant is smaller.",
+          "The elephant is bigger.",
+          "The mouse is faster."
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.4,
+        "grammar_point": "comparatives",
+        "assigned_level": 3
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_MC_004",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "If she had remembered her umbrella, she ___ wet in the rain.",
+        "options": [
+          "wouldn't get",
+          "didn't get",
+          "wouldn't have gotten",
+          "hasn't gotten"
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.71,
+        "grammar_point": "third conditional",
+        "assigned_level": 5
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_004",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "fluently",
+        "phonetic": "/\u02c8flu\u02d0\u0259ntli/",
+        "image_description": "A person speaking with smooth, flowing sound waves coming from their mouth.",
+        "skill": "Pronunciation",
+        "difficulty": 0.7,
+        "word_type": "adverb",
+        "assigned_level": 5
+      },
+      "answer": false,
+      "correct": false,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_WP_001",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "teacher",
+        "phonetic": "/\u02c8ti\u02d0t\u0283\u0259r/",
+        "image_description": "A person standing in front of a chalkboard teaching students.",
+        "skill": "Pronunciation",
+        "difficulty": 0.55,
+        "word_type": "noun",
+        "assigned_level": 4
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_IS_004",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A traffic sign that shows a bicycle inside a red circle with a red line through it.",
+        "options": [
+          "You can ride a bike here.",
+          "You should ride a bike here.",
+          "You must not ride a bike here.",
+          "You have ridden a bike here."
+        ],
+        "correct_answer": 2,
+        "skill": "Grammar",
+        "difficulty": 0.6,
+        "topic": "modal verbs",
+        "assigned_level": 4
+      },
+      "answer": 2,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L4_MC_004",
+        "mechanic": "multiple-choice-text-text",
+        "sentence": "To help the environment, we ___ try to reduce pollution by walking more.",
+        "options": [
+          "has to",
+          "can",
+          "must be",
+          "have"
+        ],
+        "correct_answer": 1,
+        "skill": "Grammar",
+        "difficulty": 0.6,
+        "grammar_point": "modal verbs (suggestion)",
+        "assigned_level": 4
+      },
+      "answer": 1,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_003",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "justice",
+        "phonetic": "/\u02c8d\u0292\u028cst\u026as/",
+        "image_description": "A set of balanced scales, representing the scales of justice.",
+        "skill": "Pronunciation",
+        "difficulty": 0.65,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_WP_006",
+        "mechanic": "word-pronunciation-practice",
+        "target_word": "decision",
+        "phonetic": "/d\u026a\u02c8s\u026a\u0292n/",
+        "image_description": "A road sign with arrows pointing in two different directions.",
+        "skill": "Pronunciation",
+        "difficulty": 0.7,
+        "word_type": "noun",
+        "assigned_level": 5
+      },
+      "answer": true,
+      "correct": true,
+      "response_time": 0
+    },
+    {
+      "question": {
+        "id": "L5_IS_003",
+        "mechanic": "image-single-choice-from-texts",
+        "image_description": "A girl holding an umbrella, looking up at a dark, cloudy sky.",
+        "options": [
+          "If it rains, she will use her umbrella.",
+          "If it rains, she would use her umbrella.",
+          "If it had rained, she will use her umbrella.",
+          "If it rained, she used her umbrella."
+        ],
+        "correct_answer": 0,
+        "skill": "Grammar",
+        "difficulty": 0.7,
+        "topic": "conditionals",
+        "assigned_level": 5
+      },
+      "answer": 1,
+      "correct": false,
+      "response_time": 0
+    }
+  ],
+  "analysis": {
+    "placement": {
+      "novakid_level": 4,
+      "confidence": 0.85,
+      "cefr_equivalent": "B1",
+      "level_justification": "The student demonstrated 100% accuracy on all Level 3 and 4 questions, showing a solid grasp of complex sentences. Performance drops at Level 5 (60% accuracy), indicating this is their instructional level. The single error at Level 2 appears to be an outlier."
+    },
+    "skill_analysis": {
+      "pronunciation": {
+        "score": 0.9,
+        "evidence": [
+          "Achieved high accuracy (7/8 correct) on pronunciation tasks across all levels.",
+          "Demonstrates mastery of pronunciation for words up to Level 4, with only minor issues on more advanced Level 5 vocabulary."
+        ]
+      },
+      "grammar": {
+        "score": 0.7,
+        "evidence": [
+          "Successfully answered all grammar questions at Levels 3 and 4.",
+          "Shows some inconsistency, with errors on both a basic (Level 2) and an advanced (Level 5) grammar point, suggesting specific knowledge gaps."
+        ]
+      },
+      "vocabulary": {
+        "score": 0.8,
+        "evidence": [
+          "Correctly identified the Level 1 vocabulary item.",
+          "Success in higher-level grammar questions implies a sufficient receptive vocabulary to understand complex sentence structures."
+        ]
+      }
+    },
+    "recommendations": {
+      "immediate_focus": [
+        "Review foundational grammar to address the concept missed in the Level 2 question.",
+        "Practice the complex grammar structures introduced at Level 5 to improve accuracy."
+      ],
+      "strengths_to_build_on": [
+        "Excellent pronunciation provides a strong foundation for developing speaking fluency.",
+        "Solid comprehension of complex sentences (Level 4) should be used as a base for more advanced communication."
+      ],
+      "suggested_starting_point": "Begin at Novakid Level 4 to reinforce current knowledge and build confidence before advancing.",
+      "estimated_progress": "Ready to progress to Level 5 in 8-10 weeks with focused practice on grammar consistency."
+    },
+    "_analysis_method": "ai"
+  },
+  "final_level": 5
+}

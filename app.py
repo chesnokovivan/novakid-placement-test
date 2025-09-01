@@ -16,6 +16,62 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Custom CSS for bigger buttons for kids
+st.markdown("""
+<style>
+    .stButton > button {
+        height: 80px !important;
+        font-size: 1.5rem !important;
+        font-weight: bold !important;
+        border-radius: 15px !important;
+        border: 3px solid #e0e0e0 !important;
+        margin: 10px 0 !important;
+    }
+    
+    .stButton > button:hover {
+        border-color: #1f77b4 !important;
+        box-shadow: 0 4px 12px rgba(31, 119, 180, 0.3) !important;
+        transform: translateY(-2px) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stButton > button[kind="primary"] {
+        background-color: #1f77b4 !important;
+        border-color: #1f77b4 !important;
+        height: 90px !important;
+    }
+    
+    .stButton > button[kind="secondary"] {
+        height: 85px !important;
+        background-color: #f8f9fa !important;
+    }
+    
+    /* Make images more centered and responsive */
+    .stImage {
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Center audio player */
+    .stAudio {
+        display: flex !important;
+        justify-content: center !important;
+    }
+</style>
+
+<script>
+// Listen for speech recognition results from iframe
+window.addEventListener('message', function(event) {
+    if (event.data.type === 'speech_result') {
+        // Store result in sessionStorage for Streamlit to check
+        sessionStorage.setItem('speech_result_' + event.data.questionId, JSON.stringify(event.data));
+        // Force page refresh to trigger Streamlit check
+        setTimeout(() => window.location.reload(), 1000);
+    }
+});
+</script>
+""", unsafe_allow_html=True)
+
 def initialize_session_state():
     """Initialize all session state variables"""
     if 'test_started' not in st.session_state:
@@ -120,14 +176,11 @@ def process_answer(answer):
         is_correct
     )
     
-    # Show feedback
+    # Brief feedback
     if is_correct:
         st.success("✅ Correct!")
     else:
         st.error("❌ Incorrect")
-        if 'correct_answer' in st.session_state.current_question:
-            correct_option = st.session_state.current_question['options'][st.session_state.current_question['correct_answer']]
-            st.info(f"The correct answer was: {correct_option}")
     
     # Check if test should continue
     if len(st.session_state.test_history) >= QUESTIONS_PER_TEST:
@@ -143,9 +196,9 @@ def process_answer(answer):
     else:
         complete_test()
     
-    # Brief pause to show feedback
+    # Brief pause then auto-advance
     import time
-    time.sleep(1.5)
+    time.sleep(1)
     st.rerun()
 
 def complete_test():
@@ -206,35 +259,37 @@ def save_test_results():
 
 def show_test_interface():
     """Show the main test interface"""
-    # Header with progress
-    col1, col2, col3 = st.columns([2, 1, 1])
-    
-    with col1:
-        st.title("🎓 Novakid Placement Test")
-    with col2:
+    # All progress and scoring info goes to sidebar
+    with st.sidebar:
+        st.title("🎓 Test Progress")
+        
+        # Progress
         progress = st.session_state.question_number / QUESTIONS_PER_TEST
-        st.metric("Progress", f"{st.session_state.question_number}/{QUESTIONS_PER_TEST}")
-    with col3:
+        st.metric("Questions", f"{st.session_state.question_number}/{QUESTIONS_PER_TEST}")
+        st.progress(progress)
+        
+        # Current level
         current_level = st.session_state.adaptive_engine.current_level
         st.metric("Current Level", f"Level {current_level}")
+        
+        # Question type
+        if st.session_state.current_question:
+            mechanic = st.session_state.current_question['mechanic']
+            mechanic_labels = {
+                'multiple-choice-text-text': '📝 Grammar',
+                'word-pronunciation-practice': '🗣️ Pronunciation', 
+                'image-single-choice-from-texts': '🖼️ Vocabulary'
+            }
+            st.info(mechanic_labels.get(mechanic, mechanic))
+        
+        # Running score
+        if st.session_state.test_history:
+            correct_count = sum(1 for h in st.session_state.test_history if h['correct'])
+            accuracy = correct_count / len(st.session_state.test_history)
+            st.metric("Accuracy", f"{accuracy:.0%}")
     
-    # Progress bar
-    st.progress(progress)
-    
-    # Show current question
+    # Clean main area - only question and answers
     if st.session_state.current_question and not st.session_state.answer_submitted:
-        st.markdown("---")
-        
-        # Show question type badge
-        mechanic = st.session_state.current_question['mechanic']
-        mechanic_labels = {
-            'multiple-choice-text-text': '📝 Grammar',
-            'word-pronunciation-practice': '🗣️ Pronunciation', 
-            'image-single-choice-from-texts': '🖼️ Vocabulary'
-        }
-        
-        st.badge(mechanic_labels.get(mechanic, mechanic))
-        
         # Render the question
         answer = render_question(st.session_state.current_question, st.session_state.question_number)
         
@@ -244,11 +299,8 @@ def show_test_interface():
             process_answer(answer)
     
     elif st.session_state.answer_submitted:
-        # Show "Next Question" button after feedback
-        st.markdown("---")
-        if st.button("➡️ Next Question", type="primary", use_container_width=True):
-            # This will trigger rerun and show next question
-            pass
+        # Just show feedback briefly, auto-advance handled in process_answer
+        pass
     
     else:
         st.warning("No more questions available. Completing test...")
