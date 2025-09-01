@@ -308,117 +308,160 @@ def show_test_interface():
         st.rerun()
 
 def show_results_screen():
-    """Display final test results"""
-    st.title("🎉 Test Complete!")
+    """Display final test results with kid-friendly design"""
+    # Big celebration header
+    st.markdown("""
+    <div style='text-align: center; padding: 20px;'>
+        <h1 style='font-size: 4rem; margin: 0;'>🎉</h1>
+        <h1 style='color: #1f77b4; font-size: 3rem; margin: 0;'>Awesome Job!</h1>
+        <h2 style='color: #666; font-size: 1.5rem; margin: 10px 0;'>You completed the test! 🌟</h2>
+    </div>
+    """, unsafe_allow_html=True)
     
     if st.session_state.test_results:
         placement = st.session_state.test_results['placement']
         
-        # Main result card
-        with st.container():
-            col1, col2, col3 = st.columns(3)
-            
-            with col1:
-                st.metric(
-                    "Novakid Level",
-                    f"Level {placement['novakid_level']}",
-                    help="Your recommended starting level"
-                )
-            
-            with col2:
-                st.metric(
-                    "CEFR Level", 
-                    placement['cefr_equivalent'],
-                    help="Common European Framework reference"
-                )
-            
-            with col3:
-                confidence_pct = f"{placement['confidence']:.0%}"
-                st.metric(
-                    "Confidence",
-                    confidence_pct,
-                    help="How confident we are in this placement"
-                )
+        # Giant level badge
+        level_colors = {0: "#FF6B6B", 1: "#4ECDC4", 2: "#45B7D1", 3: "#96CEB4", 4: "#FECA57", 5: "#9B59B6"}
+        level_color = level_colors.get(placement['novakid_level'], "#1f77b4")
         
-        st.markdown("---")
+        st.markdown(f"""
+        <div style='text-align: center; padding: 30px; background: linear-gradient(135deg, {level_color}22 0%, {level_color}44 100%); 
+                    border-radius: 20px; margin: 20px 0; border: 3px solid {level_color};'>
+            <h1 style='font-size: 4rem; color: {level_color}; margin: 0;'>Level {placement['novakid_level']}</h1>
+            <h3 style='color: #333; margin: 10px 0;'>Your English Level</h3>
+            <p style='font-size: 1.2rem; color: #666; margin: 5px 0;'>CEFR: {placement['cefr_equivalent']}</p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # Level justification with analysis method feedback
-        st.subheader("📊 Placement Analysis")
-        
-        # Show analysis method info
-        analysis_method = st.session_state.test_results.get('_analysis_method', 'unknown')
-        if analysis_method == 'fallback':
-            st.warning("⚠️ AI analysis unavailable - showing basic placement based on accuracy")
-            error_info = st.session_state.test_results.get('_analysis_error', 'Unknown error')
-            st.caption(f"Analysis error: {error_info}")
-        elif analysis_method == 'ai':
-            st.success("✨ Analysis powered by AI")
-        
-        st.info(placement['level_justification'])
-        
-        # Skill breakdown if available
+        # Fun skill badges
         if 'skill_analysis' in st.session_state.test_results:
-            st.subheader("🔍 Skill Analysis")
+            st.markdown("<h2 style='text-align: center; color: #1f77b4;'>🏆 Your Super Skills!</h2>", unsafe_allow_html=True)
             
             skill_analysis = st.session_state.test_results['skill_analysis']
+            skill_icons = {"vocabulary": "📚", "pronunciation": "🗣️", "grammar": "✏️"}
             
             cols = st.columns(len(skill_analysis))
             for i, (skill, data) in enumerate(skill_analysis.items()):
                 with cols[i]:
-                    score_pct = f"{data['score']:.0%}"
-                    st.metric(skill.title(), score_pct)
-                    with st.expander(f"View {skill} details"):
-                        for evidence in data['evidence']:
-                            st.write(f"• {evidence}")
+                    score = data['score']
+                    icon = skill_icons.get(skill, "⭐")
+                    
+                    # Star rating based on score
+                    stars = "⭐" * max(1, min(5, int(score * 5)))
+                    
+                    # Color coding
+                    if score >= 0.9:
+                        badge_color = "#4CAF50"  # Green
+                        badge_text = "Amazing!"
+                    elif score >= 0.7:
+                        badge_color = "#FF9800"  # Orange
+                        badge_text = "Great!"
+                    else:
+                        badge_color = "#2196F3"  # Blue
+                        badge_text = "Good!"
+                    
+                    st.markdown(f"""
+                    <div style='text-align: center; padding: 20px; background: {badge_color}22; 
+                                border-radius: 15px; margin: 10px; border: 2px solid {badge_color};'>
+                        <div style='font-size: 3rem; margin: 0;'>{icon}</div>
+                        <h3 style='color: {badge_color}; margin: 10px 0;'>{skill.title()}</h3>
+                        <div style='font-size: 1.5rem; margin: 5px 0;'>{stars}</div>
+                        <p style='color: {badge_color}; font-weight: bold; margin: 5px 0;'>{badge_text}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
         
-        # Recommendations
+        # What this means section
+        st.markdown("---")
+        st.markdown("<h2 style='text-align: center; color: #1f77b4;'>🎯 What This Means</h2>", unsafe_allow_html=True)
+        
+        # Kid-friendly explanation
+        level_descriptions = {
+            0: "You're just starting your English adventure! 🌱",
+            1: "You know some English words and can say simple things! 🌿", 
+            2: "You can have basic conversations and understand simple stories! 🌳",
+            3: "You can talk about many topics and understand most conversations! 🌲",
+            4: "You're really good at English and can discuss complex topics! 🏔️",
+            5: "You're almost like a native speaker - amazing job! 🏆"
+        }
+        
+        description = level_descriptions.get(placement['novakid_level'], "You're doing great!")
+        st.markdown(f"""
+        <div style='text-align: center; padding: 25px; background: #f0f8ff; 
+                    border-radius: 15px; border-left: 5px solid #1f77b4;'>
+            <p style='font-size: 1.3rem; color: #333; margin: 0;'>{description}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Next steps - kid friendly
         if 'recommendations' in st.session_state.test_results:
-            st.subheader("💡 Recommendations")
+            st.markdown("---")
+            st.markdown("<h2 style='text-align: center; color: #1f77b4;'>🚀 What's Next?</h2>", unsafe_allow_html=True)
             
             recs = st.session_state.test_results['recommendations']
             
+            # Starting point as a big friendly card
+            starting_point = recs.get('suggested_starting_point', 'Keep practicing!')
+            st.markdown(f"""
+            <div style='text-align: center; padding: 25px; background: #e8f5e8; 
+                        border-radius: 15px; border: 2px solid #4CAF50; margin: 20px 0;'>
+                <h3 style='color: #4CAF50; margin: 0 0 10px 0;'>🎯 Your Starting Point</h3>
+                <p style='font-size: 1.2rem; color: #333; margin: 0;'>{starting_point}</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Strengths and focus areas in kid-friendly format
             col1, col2 = st.columns(2)
             
             with col1:
-                st.markdown("**Next Steps:**")
-                for focus in recs.get('immediate_focus', []):
-                    st.write(f"• {focus}")
-                
-                st.markdown("**Starting Point:**")
-                st.success(recs.get('suggested_starting_point', 'Begin regular practice'))
+                if recs.get('strengths_to_build_on'):
+                    st.markdown("""
+                    <div style='padding: 20px; background: #fff3cd; border-radius: 15px; border: 2px solid #ffc107;'>
+                        <h3 style='color: #e67e22; text-align: center;'>💪 Your Superpowers</h3>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    for strength in recs['strengths_to_build_on'][:2]:  # Limit to 2 for kids
+                        st.markdown(f"<p style='margin: 10px 0; color: #666;'>⭐ {strength}</p>", unsafe_allow_html=True)
             
             with col2:
-                st.markdown("**Strengths:**")
-                for strength in recs.get('strengths_to_build_on', []):
-                    st.write(f"• {strength}")
-                
-                st.markdown("**Timeline:**")
-                st.info(recs.get('estimated_progress', 'Continue practicing regularly'))
+                if recs.get('immediate_focus'):
+                    st.markdown("""
+                    <div style='padding: 20px; background: #e1f5fe; border-radius: 15px; border: 2px solid #03a9f4;'>
+                        <h3 style='color: #0277bd; text-align: center;'>🎯 Practice These</h3>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    for focus in recs['immediate_focus'][:2]:  # Limit to 2 for kids
+                        st.markdown(f"<p style='margin: 10px 0; color: #666;'>📚 {focus}</p>", unsafe_allow_html=True)
     
-    # Test statistics
+    # Fun test stats for kids
     st.markdown("---")
-    st.subheader("📈 Test Statistics")
+    st.markdown("<h2 style='text-align: center; color: #1f77b4;'>📊 Your Test Numbers</h2>", unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3)
+    correct_count = sum(1 for h in st.session_state.test_history if h['correct'])
+    total_questions = len(st.session_state.test_history)
+    accuracy = correct_count / total_questions if total_questions else 0
     
-    with col1:
-        correct_count = sum(1 for h in st.session_state.test_history if h['correct'])
-        st.metric("Questions Correct", f"{correct_count}/{len(st.session_state.test_history)}")
-    
+    # Visual progress bar for correct answers
+    col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        accuracy = correct_count / len(st.session_state.test_history) if st.session_state.test_history else 0
-        st.metric("Accuracy", f"{accuracy:.0%}")
+        st.markdown(f"""
+        <div style='text-align: center; padding: 20px; background: #f8f9fa; border-radius: 15px; margin: 10px 0;'>
+            <h3 style='color: #333; margin: 0 0 15px 0;'>You got {correct_count} out of {total_questions} questions right!</h3>
+            <div style='background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden; margin: 10px 0;'>
+                <div style='background: #4CAF50; height: 100%; width: {accuracy*100}%; transition: width 0.5s;'></div>
+            </div>
+            <p style='font-size: 1.2rem; color: #4CAF50; margin: 10px 0; font-weight: bold;'>{accuracy:.0%} Correct! 🎯</p>
+        </div>
+        """, unsafe_allow_html=True)
     
-    with col3:
-        final_level = st.session_state.adaptive_engine.current_level if st.session_state.adaptive_engine else 1
-        st.metric("Final Test Level", f"Level {final_level}")
-    
-    # Action buttons
+    # Big friendly action buttons
     st.markdown("---")
     col1, col2 = st.columns(2)
     
     with col1:
-        if st.button("🔄 Take Test Again", use_container_width=True):
+        if st.button("🔄 Try Again!", use_container_width=True, type="primary"):
             # Reset session state
             for key in list(st.session_state.keys()):
                 if key.startswith(('test_', 'current_', 'question_', 'student_', 'adaptive_', 'answer_')):
@@ -426,7 +469,7 @@ def show_results_screen():
             st.rerun()
     
     with col2:
-        if st.button("📄 View Detailed Results", use_container_width=True):
+        if st.button("🔍 See All Questions", use_container_width=True):
             show_detailed_results()
 
 def show_detailed_results():

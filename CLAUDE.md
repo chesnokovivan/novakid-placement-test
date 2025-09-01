@@ -21,6 +21,8 @@ python generate_questions.py
 ### Run Application
 ```bash
 streamlit run app.py
+
+IMPORTANT: DO NOT RUN THE APP AUTOMATICALLY. I WILL DO IT MANUALLY IN OTHER TERMINAL.
 ```
 
 ## Architecture

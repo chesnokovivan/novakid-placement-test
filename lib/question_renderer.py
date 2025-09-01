@@ -48,76 +48,95 @@ def render_multiple_choice(question: Dict) -> Optional[int]:
 
 def render_pronunciation(question: Dict) -> Optional[bool]:
     """Render word pronunciation practice"""
-    # Check states that should skip media rendering
     recording_key = f'recording_{question["id"]}'
     result_key = f'speech_result_{question["id"]}'
     final_result_key = f'pronunciation_result_{question["id"]}'
+    media_rendered_key = f'pron_media_rendered_{question["id"]}'
     
     # Return final result if we have one
     if final_result_key in st.session_state:
         result = st.session_state[final_result_key]
         del st.session_state[final_result_key]
+        # Clean up rendered flags
+        if media_rendered_key in st.session_state:
+            del st.session_state[media_rendered_key]
         return result
     
-    # If in recording/result state, skip media and go to speech processing
-    if recording_key in st.session_state or result_key in st.session_state:
-        speech_result = render_speech_recognition(question['target_word'], question['id'])
-        if speech_result is not None:
-            st.session_state[final_result_key] = speech_result
-            st.rerun()
-        return None
-    
-    # Initial state: render media and interface
+    # Always show the word header
     st.markdown(f"<h1 style='text-align: center; font-size: 3rem; color: #1f77b4;'>{question['target_word']}</h1>", unsafe_allow_html=True)
     st.markdown(f"<h2 style='text-align: center; font-size: 1.5rem; color: #666;'>/{question['phonetic']}/</h2>", unsafe_allow_html=True)
     
     st.markdown("---")
     
-    # Centered image and audio - only render in initial state
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Real image from Unsplash
-        image_url = get_unsplash_image(question['image_description'])
-        if image_url:
-            st.image(image_url, width=400, caption=question['image_description'])
-        else:
-            st.info(f"📷 {question['image_description']}")
-        
-        # Real audio from TTS API
-        audio_url = get_audio_url(question['target_word'])
-        st.audio(audio_url)
+    # Only render media once per question using session state flag
+    if media_rendered_key not in st.session_state:
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            # Real image from Unsplash
+            image_url = get_unsplash_image(question['image_description'])
+            if image_url:
+                st.image(image_url, width=400, caption=question['image_description'])
+            else:
+                st.info(f"📷 {question['image_description']}")
+            
+            # Real audio from TTS API
+            audio_url = get_audio_url(question['target_word'])
+            st.audio(audio_url)
+        # Mark media as rendered
+        st.session_state[media_rendered_key] = True
+    else:
+        # Show placeholder to maintain layout
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.empty()  # Maintain space but don't re-render media
     
     st.markdown("---")
     
     # Speech recognition interface
     speech_result = render_speech_recognition(question['target_word'], question['id'])
+    if speech_result is not None:
+        st.session_state[final_result_key] = speech_result
+        st.rerun()
     
     return None
 
 def render_image_choice(question: Dict) -> Optional[int]:
     """Render image with text choices"""
-    # Check if we have a stored result first (prevents re-rendering)
     result_key = f"img_result_{question['id']}"
+    image_rendered_key = f"img_rendered_{question['id']}"
+    
+    # Check if we have a stored result
     if result_key in st.session_state:
         result = st.session_state[result_key]
         del st.session_state[result_key]
+        # Clean up the rendered flag
+        if image_rendered_key in st.session_state:
+            del st.session_state[image_rendered_key]
         return result
     
     st.markdown("<h1 style='text-align: center; font-size: 2.5rem;'>What do you see?</h1>", unsafe_allow_html=True)
     
-    # Centered image - only rendered in initial state
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        # Real image from Unsplash
-        image_url = get_unsplash_image(question['image_description'])
-        if image_url:
-            st.image(image_url, width=500, caption=question['image_description'])
-        else:
-            st.info(f"📷 {question['image_description']}")
+    # Only render image once per question using session state flag
+    if image_rendered_key not in st.session_state:
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            # Real image from Unsplash
+            image_url = get_unsplash_image(question['image_description'])
+            if image_url:
+                st.image(image_url, width=500, caption=question['image_description'])
+            else:
+                st.info(f"📷 {question['image_description']}")
+        # Mark image as rendered
+        st.session_state[image_rendered_key] = True
+    else:
+        # Show placeholder to maintain layout
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.empty()  # Maintain space but don't re-render image
     
     st.markdown("---")
     
-    # Extra big answer buttons for kids - no help tooltips
+    # Answer buttons
     for i, option in enumerate(question['options']):
         if st.button(
             option, 
