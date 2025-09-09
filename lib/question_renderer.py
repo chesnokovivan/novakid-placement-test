@@ -1,8 +1,7 @@
 # UI components for questions
 import streamlit as st
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from .media_apis import get_unsplash_image, get_audio_url
-import streamlit.components.v1 as components
 
 def render_question(question: Dict, question_number: int = None) -> Optional[any]:
     """Render question based on mechanic type"""
@@ -15,6 +14,12 @@ def render_question(question: Dict, question_number: int = None) -> Optional[any
         return render_pronunciation(question)
     elif mechanic == 'image-single-choice-from-texts':
         return render_image_choice(question)
+    elif mechanic == 'audio-single-choice-from-images':
+        return render_audio_image_choice(question)
+    elif mechanic == 'sentence-pronunciation-practice':
+        return render_sentence_pronunciation(question)
+    elif mechanic == 'sentence-scramble':
+        return render_sentence_scramble(question)
     else:
         st.error(f"Unknown mechanic: {mechanic}")
         return None
@@ -149,10 +154,214 @@ def render_image_choice(question: Dict) -> Optional[int]:
     
     return None
 
-def render_speech_recognition(target_word: str, question_id: str) -> Optional[bool]:
+def render_audio_image_choice(question: Dict) -> Optional[int]:
+    """Render audio with image choices"""
+    result_key = f"audio_img_result_{question['id']}"
+    media_rendered_key = f"audio_img_media_rendered_{question['id']}"
+    
+    # Check if we have a stored result
+    if result_key in st.session_state:
+        result = st.session_state[result_key]
+        del st.session_state[result_key]
+        # Clean up the rendered flag
+        if media_rendered_key in st.session_state:
+            del st.session_state[media_rendered_key]
+        return result
+    
+    st.markdown("<h1 style='text-align: center; font-size: 2.5rem;'>🎧 Listen and Choose</h1>", unsafe_allow_html=True)
+    
+    # Only render audio once per question using session state flag
+    if media_rendered_key not in st.session_state:
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            # Real audio from TTS API
+            audio_url = get_audio_url(question['target_audio'])
+            st.audio(audio_url)
+        # Mark media as rendered
+        st.session_state[media_rendered_key] = True
+    else:
+        # Show placeholder to maintain layout
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.empty()  # Maintain space but don't re-render audio
+    
+    st.markdown("---")
+    
+    # Image options in a row
+    cols = st.columns(len(question['image_options']))
+    for i, image_desc in enumerate(question['image_options']):
+        with cols[i]:
+            # Real image from Unsplash
+            image_url = get_unsplash_image(image_desc)
+            if image_url:
+                st.image(image_url, width=200)
+            else:
+                st.info(f"📷 {image_desc}")
+            
+            if st.button(
+                f"Choose {chr(65+i)}", 
+                key=f"audio_img_opt_{question['id']}_{i}", 
+                use_container_width=True,
+                type="secondary"
+            ):
+                st.session_state[result_key] = i
+                st.rerun()
+    
+    return None
+
+def render_sentence_pronunciation(question: Dict) -> Optional[bool]:
+    """Render sentence pronunciation practice"""
+    recording_key = f'sentence_recording_{question["id"]}'
+    result_key = f'sentence_speech_result_{question["id"]}'
+    final_result_key = f'sentence_pronunciation_result_{question["id"]}'
+    media_rendered_key = f'sentence_pron_media_rendered_{question["id"]}'
+    
+    # Return final result if we have one
+    if final_result_key in st.session_state:
+        result = st.session_state[final_result_key]
+        del st.session_state[final_result_key]
+        # Clean up rendered flags
+        if media_rendered_key in st.session_state:
+            del st.session_state[media_rendered_key]
+        return result
+    
+    # Always show the sentence header
+    st.markdown(f"<h1 style='text-align: center; font-size: 2.5rem; color: #1f77b4;'>{question['target_sentence']}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center; font-size: 1.5rem; color: #666;'>/{question['phonetic']}/</h2>", unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    # Only render media once per question using session state flag
+    if media_rendered_key not in st.session_state:
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            # Real image from Unsplash
+            image_url = get_unsplash_image(question['image_description'])
+            if image_url:
+                st.image(image_url, width=400, caption=question['image_description'])
+            else:
+                st.info(f"📷 {question['image_description']}")
+            
+            # Real audio from TTS API
+            audio_url = get_audio_url(question['target_sentence'])
+            st.audio(audio_url)
+        # Mark media as rendered
+        st.session_state[media_rendered_key] = True
+    else:
+        # Show placeholder to maintain layout
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.empty()  # Maintain space but don't re-render media
+    
+    st.markdown("---")
+    
+    # Speech recognition interface
+    speech_result = render_speech_recognition(question['target_sentence'], question['id'], is_sentence=True)
+    if speech_result is not None:
+        st.session_state[final_result_key] = speech_result
+        st.rerun()
+    
+    return None
+
+def render_sentence_scramble(question: Dict) -> Optional[List[int]]:
+    """Render sentence scramble with drag-drop word ordering"""
+    result_key = f"scramble_result_{question['id']}"
+    selected_words_key = f"scramble_selected_{question['id']}"
+    
+    # Check if we have a stored result
+    if result_key in st.session_state:
+        result = st.session_state[result_key]
+        del st.session_state[result_key]
+        # Clean up selected words
+        if selected_words_key in st.session_state:
+            del st.session_state[selected_words_key]
+        return result
+    
+    # Initialize selected words if not present
+    if selected_words_key not in st.session_state:
+        st.session_state[selected_words_key] = []
+    
+    st.markdown("<h1 style='text-align: center; font-size: 2.5rem;'>🧩 Put the words in order</h1>", unsafe_allow_html=True)
+    
+    # Show sentence template with blanks
+    sentence_parts = question['sentence_template'].split('___')
+    display_sentence = ""
+    selected_words = st.session_state[selected_words_key]
+    blank_index = 0
+    
+    for i, part in enumerate(sentence_parts):
+        display_sentence += part
+        if i < len(sentence_parts) - 1:  # Not the last part
+            if blank_index < len(selected_words):
+                display_sentence += f"<span style='background: #e3f2fd; padding: 5px 10px; border-radius: 5px; margin: 0 5px; font-weight: bold;'>{question['word_options'][selected_words[blank_index]]}</span>"
+            else:
+                display_sentence += "<span style='background: #f5f5f5; padding: 5px 10px; border-radius: 5px; margin: 0 5px; border: 2px dashed #ccc;'>___</span>"
+            blank_index += 1
+    
+    st.markdown(f"<h2 style='text-align: center; font-size: 1.8rem; margin: 30px 0;'>{display_sentence}</h2>", unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    # Word options buttons
+    st.markdown("### Choose words in order:")
+    
+    # Calculate how many blanks we need to fill
+    num_blanks = question['sentence_template'].count('___')
+    
+    # Show available words
+    cols = st.columns(min(len(question['word_options']), 4))  # Max 4 columns
+    for i, word in enumerate(question['word_options']):
+        col_idx = i % len(cols)
+        with cols[col_idx]:
+            # Disable button if already selected or if we've filled all blanks
+            disabled = i in selected_words or len(selected_words) >= num_blanks
+            button_type = "secondary" if not disabled else "primary"
+            
+            if st.button(
+                word, 
+                key=f"word_btn_{question['id']}_{i}",
+                use_container_width=True,
+                type=button_type,
+                disabled=disabled
+            ):
+                if len(selected_words) < num_blanks:
+                    st.session_state[selected_words_key].append(i)
+                    st.rerun()
+    
+    # Control buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    
+    with col1:
+        if st.button("🔄 Clear All", key=f"clear_{question['id']}", use_container_width=True):
+            st.session_state[selected_words_key] = []
+            st.rerun()
+    
+    with col2:
+        if st.button("⬅️ Remove Last", key=f"remove_last_{question['id']}", use_container_width=True):
+            if selected_words:
+                st.session_state[selected_words_key].pop()
+                st.rerun()
+    
+    with col3:
+        # Submit button - only enabled when all blanks are filled
+        submit_disabled = len(selected_words) < num_blanks
+        if st.button(
+            "✅ Submit", 
+            key=f"submit_{question['id']}", 
+            use_container_width=True, 
+            type="primary",
+            disabled=submit_disabled
+        ):
+            st.session_state[result_key] = selected_words.copy()
+            st.rerun()
+    
+    return None
+
+def render_speech_recognition(target_word: str, question_id: str, is_sentence: bool = False) -> Optional[bool]:
     """Render fake speech recognition with recording simulation"""
     
-    st.markdown("### 🎤 Say the word out loud!")
+    prompt_text = "### 🎤 Say the sentence out loud!" if is_sentence else "### 🎤 Say the word out loud!"
+    st.markdown(prompt_text)
     
     # Create columns for centered interface
     col1, col2, col3 = st.columns([1, 2, 1])
@@ -212,10 +421,13 @@ def check_answer(question: Dict, answer: any) -> bool:
     """Check if answer is correct"""
     mechanic = question['mechanic']
     
-    if mechanic in ['multiple-choice-text-text', 'image-single-choice-from-texts']:
+    if mechanic in ['multiple-choice-text-text', 'image-single-choice-from-texts', 'audio-single-choice-from-images']:
         return answer == question['correct_answer']
-    elif mechanic == 'word-pronunciation-practice':
+    elif mechanic in ['word-pronunciation-practice', 'sentence-pronunciation-practice']:
         # For pronunciation, we're using self-assessment
         return answer  # True if they said they did well or OK
+    elif mechanic == 'sentence-scramble':
+        # Check if the selected word order matches the correct order
+        return answer == question['correct_order']
     
     return False

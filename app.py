@@ -278,7 +278,10 @@ def show_test_interface():
             mechanic_labels = {
                 'multiple-choice-text-text': '📝 Grammar',
                 'word-pronunciation-practice': '🗣️ Pronunciation', 
-                'image-single-choice-from-texts': '🖼️ Vocabulary'
+                'image-single-choice-from-texts': '🖼️ Vocabulary',
+                'audio-single-choice-from-images': '🎧 Listen & Choose',
+                'sentence-pronunciation-practice': '🗣️ Sentence Practice',
+                'sentence-scramble': '🧩 Word Order'
             }
             st.info(mechanic_labels.get(mechanic, mechanic))
         

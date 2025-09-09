@@ -77,6 +77,42 @@ For 'image-single-choice-from-texts':
   "topic": "telling time"
 }}
 
+For 'audio-single-choice-from-images':
+{{
+  "id": "L{level}_AI_001",
+  "mechanic": "audio-single-choice-from-images",
+  "target_audio": "elephant",
+  "image_options": ["Large gray animal with trunk", "Small brown dog", "Yellow bird with wings"],
+  "correct_answer": 0,
+  "skill": "Listening Comprehension",
+  "difficulty": 0.3,
+  "topic": "animals"
+}}
+
+For 'sentence-pronunciation-practice':
+{{
+  "id": "L{level}_SP_001",
+  "mechanic": "sentence-pronunciation-practice",
+  "target_sentence": "How are you today?",
+  "phonetic": "/haʊ ɑr ju təˈdeɪ/",
+  "image_description": "Two people greeting each other with smiles",
+  "skill": "Sentence Pronunciation",
+  "difficulty": 0.4,
+  "sentence_type": "greeting"
+}}
+
+For 'sentence-scramble':
+{{
+  "id": "L{level}_SS_001",
+  "mechanic": "sentence-scramble",
+  "sentence_template": "I ___ to ___ every day",
+  "word_options": ["go", "school", "am", "went"],
+  "correct_order": [0, 1],
+  "skill": "Grammar",
+  "difficulty": 0.4,
+  "grammar_point": "sentence structure"
+}}
+
 Requirements:
 - Age-appropriate vocabulary and topics
 - Gradually increasing difficulty within the level
@@ -101,8 +137,11 @@ def generate_questions():
         # Determine which mechanics are available for this level
         if level >= 0:
             level_mechanics.append('word-pronunciation-practice')
+            level_mechanics.append('audio-single-choice-from-images')
+            level_mechanics.append('sentence-pronunciation-practice')
         if level >= 1:
             level_mechanics.append('image-single-choice-from-texts')
+            level_mechanics.append('sentence-scramble')
         if level >= 2:
             level_mechanics.append('multiple-choice-text-text')
         
@@ -184,6 +223,45 @@ def create_fallback_questions(level, mechanic):
                 "skill": "Vocabulary Recognition",
                 "difficulty": 0.2,
                 "topic": "fruits"
+            }
+        ]
+    elif mechanic == 'audio-single-choice-from-images':
+        fallback = [
+            {
+                "id": f"L{level}_AI_FALLBACK_001",
+                "mechanic": "audio-single-choice-from-images",
+                "target_audio": "cat",
+                "image_options": ["Small furry pet animal", "Large brown dog", "Colorful bird flying"],
+                "correct_answer": 0,
+                "skill": "Listening Comprehension",
+                "difficulty": 0.2,
+                "topic": "animals"
+            }
+        ]
+    elif mechanic == 'sentence-pronunciation-practice':
+        fallback = [
+            {
+                "id": f"L{level}_SP_FALLBACK_001",
+                "mechanic": "sentence-pronunciation-practice",
+                "target_sentence": "Hello, how are you?",
+                "phonetic": "/həˈloʊ haʊ ɑr ju/",
+                "image_description": "Two friends waving and smiling",
+                "skill": "Sentence Pronunciation",
+                "difficulty": 0.3,
+                "sentence_type": "greeting"
+            }
+        ]
+    elif mechanic == 'sentence-scramble':
+        fallback = [
+            {
+                "id": f"L{level}_SS_FALLBACK_001",
+                "mechanic": "sentence-scramble",
+                "sentence_template": "I ___ a ___",
+                "word_options": ["am", "student", "is", "teacher"],
+                "correct_order": [0, 1],
+                "skill": "Grammar",
+                "difficulty": 0.3,
+                "grammar_point": "be verb sentence"
             }
         ]
     

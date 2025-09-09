@@ -20,12 +20,12 @@ class AdaptiveEngine:
         
         # Mechanic availability by level - matches curriculum constraints
         self.mechanic_availability = {
-            0: ['word-pronunciation-practice'],
-            1: ['word-pronunciation-practice', 'image-single-choice-from-texts'],
-            2: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
-            3: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
-            4: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text'],
-            5: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text']
+            0: ['word-pronunciation-practice', 'audio-single-choice-from-images', 'sentence-pronunciation-practice'],
+            1: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
+            2: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
+            3: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
+            4: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
+            5: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble']
         }
     
     def get_next_question(self) -> Optional[Dict]:
@@ -75,8 +75,8 @@ class AdaptiveEngine:
             
             # Use diverse mechanics for calibration - respect level constraints
             level_mechanics = self.mechanic_availability[level]
-            preferred_mechanic = level_mechanics[self.calibration_count % len(level_mechanics)]
-            calibration_mechanics = [preferred_mechanic]
+            # Instead of cycling predictably, use all available mechanics for better diversity
+            calibration_mechanics = level_mechanics
             candidates = [
                 q for q in level_questions 
                 if q['mechanic'] in calibration_mechanics 
@@ -153,11 +153,11 @@ class AdaptiveEngine:
     
     def _get_preferred_mechanics(self, available_mechanics: List[str]) -> List[str]:
         """Get mechanics that haven't been used recently for diversity"""
-        if len(self.recent_mechanics) < 3:
+        if len(self.recent_mechanics) < 2:
             return available_mechanics
         
-        # Get mechanics not used in last 3 questions
-        recent_set = set(self.recent_mechanics[-3:])
+        # Get mechanics not used in last 2 questions (reduced from 3 for better diversity)
+        recent_set = set(self.recent_mechanics[-2:])
         preferred = [m for m in available_mechanics if m not in recent_set]
         
         return preferred if preferred else available_mechanics

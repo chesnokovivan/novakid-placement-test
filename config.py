@@ -20,7 +20,10 @@ LEVEL_DOWN_THRESHOLD = 0.4
 MVP_MECHANICS = [
     'multiple-choice-text-text',
     'word-pronunciation-practice',
-    'image-single-choice-from-texts'
+    'image-single-choice-from-texts',
+    'audio-single-choice-from-images',
+    'sentence-pronunciation-practice',
+    'sentence-scramble'
 ]
 
 # Paths
