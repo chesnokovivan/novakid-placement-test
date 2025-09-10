@@ -23,7 +23,8 @@ MVP_MECHANICS = [
     'image-single-choice-from-texts',
     'audio-single-choice-from-images',
     'sentence-pronunciation-practice',
-    'sentence-scramble'
+    'sentence-scramble',
+    'audio-category-sorting'
 ]
 
 # Paths

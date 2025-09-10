@@ -20,6 +20,8 @@ def render_question(question: Dict, question_number: int = None) -> Optional[any
         return render_sentence_pronunciation(question)
     elif mechanic == 'sentence-scramble':
         return render_sentence_scramble(question)
+    elif mechanic == 'audio-category-sorting':
+        return render_audio_category_sorting(question)
     else:
         st.error(f"Unknown mechanic: {mechanic}")
         return None
@@ -417,6 +419,104 @@ def render_speech_recognition(target_word: str, question_id: str, is_sentence: b
     
     return None
 
+def render_audio_category_sorting(question: Dict) -> Optional[Dict]:
+    """Render audio category sorting mechanic"""
+    result_key = f"category_sort_result_{question['id']}"
+    media_rendered_key = f"category_sort_media_rendered_{question['id']}"
+    answers_key = f"category_sort_answers_{question['id']}"
+    
+    # Check if we have a stored result
+    if result_key in st.session_state:
+        result = st.session_state[result_key]
+        del st.session_state[result_key]
+        # Clean up flags and answers
+        if media_rendered_key in st.session_state:
+            del st.session_state[media_rendered_key]
+        if answers_key in st.session_state:
+            del st.session_state[answers_key]
+        return result
+    
+    # Initialize answers dict if not present
+    if answers_key not in st.session_state:
+        st.session_state[answers_key] = {}
+    
+    st.markdown("<h1 style='text-align: center; font-size: 2.5rem;'>🎧 Sort the Words!</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 1.2rem;'>Listen to each word and click the correct category</p>", unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    # Show categories as cards/buttons
+    st.markdown("### Categories:")
+    category_cols = st.columns(len(question['categories']))
+    
+    for i, category in enumerate(question['categories']):
+        with category_cols[i]:
+            # Category card with image
+            st.markdown(f"<div style='text-align: center; background: #f0f8ff; padding: 20px; border-radius: 15px; margin: 10px; border: 3px solid #1f77b4;'>"
+                       f"<h3 style='color: #1f77b4; margin: 0;'>{category['name']}</h3>"
+                       f"</div>", unsafe_allow_html=True)
+            
+            # Real image from Unsplash for category
+            image_url = get_unsplash_image(category['image_description'])
+            if image_url:
+                st.image(image_url, width=200, caption=category['name'])
+            else:
+                st.info(f"📷 {category['image_description']}")
+    
+    st.markdown("---")
+    
+    # Show audio items to sort
+    st.markdown("### Listen and Sort:")
+    
+    answers = st.session_state[answers_key]
+    all_answered = True
+    
+    for i, audio_item in enumerate(question['audio_items']):
+        word = audio_item['word']
+        
+        col1, col2, col3 = st.columns([2, 1, 2])
+        
+        with col1:
+            # Audio player with word
+            audio_url = get_audio_url(word)
+            st.audio(audio_url)
+            st.markdown(f"<p style='text-align: center; font-size: 1.5rem;'>Word #{i+1}</p>", unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("→")
+        
+        with col3:
+            # Category selection buttons
+            if word not in answers:
+                all_answered = False
+                
+            for cat_idx, category in enumerate(question['categories']):
+                selected = answers.get(word) == cat_idx
+                button_type = "primary" if selected else "secondary"
+                
+                if st.button(
+                    f"🏷️ {category['name']}", 
+                    key=f"sort_btn_{question['id']}_{i}_{cat_idx}",
+                    type=button_type,
+                    use_container_width=True
+                ):
+                    st.session_state[answers_key][word] = cat_idx
+                    st.rerun()
+        
+        st.markdown("---")
+    
+    # Submit button
+    if all_answered:
+        col1, col2, col3 = st.columns([1, 1, 1])
+        with col2:
+            if st.button("✅ Submit All", key=f"submit_sort_{question['id']}", type="primary", use_container_width=True):
+                st.session_state[result_key] = answers.copy()
+                st.rerun()
+    else:
+        st.info("🎯 Please sort all words before submitting!")
+    
+    return None
+
 def check_answer(question: Dict, answer: any) -> bool:
     """Check if answer is correct"""
     mechanic = question['mechanic']
@@ -429,5 +529,23 @@ def check_answer(question: Dict, answer: any) -> bool:
     elif mechanic == 'sentence-scramble':
         # Check if the selected word order matches the correct order
         return answer == question['correct_order']
+    elif mechanic == 'audio-category-sorting':
+        # Check if all audio items are sorted correctly
+        if not isinstance(answer, dict):
+            return False
+        
+        correct_count = 0
+        total_items = len(question['audio_items'])
+        
+        for audio_item in question['audio_items']:
+            word = audio_item['word']
+            correct_category = audio_item['category_index']
+            user_category = answer.get(word, -1)
+            
+            if user_category == correct_category:
+                correct_count += 1
+        
+        # Consider it correct if they get majority right (to be kid-friendly)
+        return correct_count >= (total_items * 0.6)
     
     return False

@@ -4,37 +4,37 @@
       "novakid_level": 0,
       "cefr_mapping": "pre-A1",
       "description": "Complete beginner",
-      "mechanics": ["word-pronunciation-practice"]
+      "mechanics": ["word-pronunciation-practice", "audio-single-choice-from-images", "sentence-pronunciation-practice", "audio-category-sorting"]
     },
     {
       "novakid_level": 1,
       "cefr_mapping": "A1",
       "description": "Basic vocabulary and simple phrases",
-      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts"]
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "audio-single-choice-from-images", "sentence-pronunciation-practice", "sentence-scramble", "audio-category-sorting"]
     },
     {
       "novakid_level": 2,
       "cefr_mapping": "A1+",
       "description": "Expanded vocabulary and basic grammar",
-      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text", "audio-single-choice-from-images", "sentence-pronunciation-practice", "sentence-scramble", "audio-category-sorting"]
     },
     {
       "novakid_level": 3,
       "cefr_mapping": "A2",
       "description": "Simple conversations and grammar",
-      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text", "audio-single-choice-from-images", "sentence-pronunciation-practice", "sentence-scramble", "audio-category-sorting"]
     },
     {
       "novakid_level": 4,
       "cefr_mapping": "B1",
       "description": "Complex sentences and varied vocabulary",
-      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text", "audio-single-choice-from-images", "sentence-pronunciation-practice", "sentence-scramble", "audio-category-sorting"]
     },
     {
       "novakid_level": 5,
       "cefr_mapping": "B2",
       "description": "Fluent communication and complex grammar",
-      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text"]
+      "mechanics": ["word-pronunciation-practice", "image-single-choice-from-texts", "multiple-choice-text-text", "audio-single-choice-from-images", "sentence-pronunciation-practice", "sentence-scramble", "audio-category-sorting"]
     }
   ],
   "mechanic_details": {
@@ -52,6 +52,26 @@
       "min_level": 1,
       "skills": ["Reading", "Vocabulary Recognition"],
       "description": "Choose text that matches image"
+    },
+    "audio-single-choice-from-images": {
+      "min_level": 0,
+      "skills": ["Listening", "Vocabulary Recognition"],
+      "description": "Listen to word and choose matching image"
+    },
+    "sentence-pronunciation-practice": {
+      "min_level": 0,
+      "skills": ["Speaking", "Pronunciation"],
+      "description": "Practice pronouncing sentences"
+    },
+    "sentence-scramble": {
+      "min_level": 1,
+      "skills": ["Grammar", "Sentence Structure"],
+      "description": "Put words in correct order to form sentences"
+    },
+    "audio-category-sorting": {
+      "min_level": 0,
+      "skills": ["Listening", "Vocabulary Categorization"],
+      "description": "Listen to words and sort them into categories"
     }
   }
 }

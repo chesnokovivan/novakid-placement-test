@@ -18,15 +18,77 @@ class AdaptiveEngine:
         self.calibration_count = 0
         self.recent_mechanics = []  # Track last few mechanics for diversity
         
+        # Mechanic categories for dynamic balancing
+        self.AUDIO_MECHANICS = [
+            'word-pronunciation-practice', 
+            'audio-single-choice-from-images', 
+            'sentence-pronunciation-practice', 
+            'audio-category-sorting'
+        ]
+        self.TEXT_MECHANICS = [
+            'image-single-choice-from-texts', 
+            'multiple-choice-text-text', 
+            'sentence-scramble'
+        ]
+        
         # Mechanic availability by level - matches curriculum constraints
         self.mechanic_availability = {
-            0: ['word-pronunciation-practice', 'audio-single-choice-from-images', 'sentence-pronunciation-practice'],
-            1: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
-            2: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
-            3: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
-            4: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble'],
-            5: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble']
+            0: ['word-pronunciation-practice', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'audio-category-sorting'],
+            1: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble', 'audio-category-sorting'],
+            2: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble', 'audio-category-sorting'],
+            3: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble', 'audio-category-sorting'],
+            4: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble', 'audio-category-sorting'],
+            5: ['word-pronunciation-practice', 'image-single-choice-from-texts', 'multiple-choice-text-text', 'audio-single-choice-from-images', 'sentence-pronunciation-practice', 'sentence-scramble', 'audio-category-sorting']
         }
+    
+    def _select_category_balanced(self, available_levels: List[int], preferred_mechanics: List[str]) -> Optional[Dict]:
+        """Select question with true 50/50 category balance"""
+        # First decide: audio or text category (50/50 coin flip)
+        use_audio_category = random.random() < 0.5
+        
+        # Try the chosen category first, then fallback to the other
+        for attempt_audio in [use_audio_category, not use_audio_category]:
+            # Get mechanics for this category
+            target_mechanics = self.AUDIO_MECHANICS if attempt_audio else self.TEXT_MECHANICS
+            
+            # Filter to available mechanics at current level
+            available_mechanics = self.mechanic_availability[self.current_level]
+            category_mechanics = [m for m in available_mechanics if m in target_mechanics]
+            
+            # Apply diversity filter (prefer recently unused mechanics)
+            diverse_mechanics = [m for m in category_mechanics if m not in self.recent_mechanics[-2:]]
+            mechanics_to_try = diverse_mechanics if diverse_mechanics else category_mechanics
+            
+            # Also consider preferred mechanics if they overlap
+            if preferred_mechanics:
+                preferred_in_category = [m for m in preferred_mechanics if m in mechanics_to_try]
+                if preferred_in_category:
+                    mechanics_to_try = preferred_in_category
+            
+            # Collect candidates across all available levels
+            all_candidates = []
+            for level in available_levels:
+                level_questions = self.question_bank.get(str(level), [])
+                candidates = [
+                    q for q in level_questions 
+                    if q['mechanic'] in mechanics_to_try 
+                    and q['id'] not in self.used_questions
+                ]
+                
+                # Add level assignment to candidates
+                for candidate in candidates[:5]:  # Limit per level to avoid dominance
+                    candidate_copy = candidate.copy()
+                    candidate_copy['assigned_level'] = level
+                    all_candidates.append(candidate_copy)
+            
+            # Select randomly from category candidates
+            if all_candidates:
+                question = random.choice(all_candidates)
+                self.used_questions.add(question['id'])
+                self._track_mechanic_usage(question['mechanic'])
+                return question
+        
+        return None
     
     def get_next_question(self) -> Optional[Dict]:
         """Get the next question based on adaptive logic"""
@@ -37,31 +99,17 @@ class AdaptiveEngine:
             if question:
                 return question
         
-        # Adaptive phase: select from appropriate level with mechanic diversity
+        # Adaptive phase: select with true category balance
         available_levels = self._get_available_levels()
         available_mechanics = self.mechanic_availability[self.current_level]
         
         # Get preferred mechanics (not used recently)
         preferred_mechanics = self._get_preferred_mechanics(available_mechanics)
         
-        # Try to find unused question with preferred mechanic first
-        for level in available_levels:
-            level_questions = self.question_bank.get(str(level), [])
-            
-            # First try preferred mechanics
-            for mechanic_priority in [preferred_mechanics, available_mechanics]:
-                candidates = [
-                    q for q in level_questions 
-                    if q['mechanic'] in mechanic_priority 
-                    and q['id'] not in self.used_questions
-                ]
-                
-                if candidates:
-                    question = random.choice(candidates[:5])
-                    self.used_questions.add(question['id'])
-                    question['assigned_level'] = level
-                    self._track_mechanic_usage(question['mechanic'])
-                    return question
+        # Use the clean category-first selection
+        question = self._select_category_balanced(available_levels, preferred_mechanics)
+        if question:
+            return question
         
         return None
     
@@ -84,17 +132,16 @@ class AdaptiveEngine:
             ]
             
             if candidates:
-                question = random.choice(candidates)
-                self.used_questions.add(question['id'])
-                question['assigned_level'] = level
-                question['is_calibration'] = True
-                self.calibration_count += 1
-                self._track_mechanic_usage(question['mechanic'])
-                
-                if self.calibration_count >= 3:
-                    self.calibration_complete = True
-                
-                return question
+                # Use category-balanced selection for calibration too
+                question = self._select_category_balanced([level], [])
+                if question:
+                    question['is_calibration'] = True
+                    self.calibration_count += 1
+                    
+                    if self.calibration_count >= 3:
+                        self.calibration_complete = True
+                    
+                    return question
         
         self.calibration_complete = True
         return None

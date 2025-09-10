@@ -1,0 +1,2114 @@
+{
+  "0": [
+    {
+      "id": "L0_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "pen",
+      "phonetic": "/pen/",
+      "image_description": "A simple red pen used for writing.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "noun"
+    },
+    {
+      "id": "L0_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "red",
+      "phonetic": "/red/",
+      "image_description": "A bright red apple.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L0_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "one",
+      "phonetic": "/w\u028cn/",
+      "image_description": "The number 1 with a birthday candle on top.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "number"
+    },
+    {
+      "id": "L0_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "book",
+      "phonetic": "/b\u028ak/",
+      "image_description": "A colorful children's storybook that is open.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "noun"
+    },
+    {
+      "id": "L0_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "blue",
+      "phonetic": "/blu\u02d0/",
+      "image_description": "A simple blue ball.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L0_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "two",
+      "phonetic": "/tu\u02d0/",
+      "image_description": "The number 2 next to two small birds.",
+      "skill": "Pronunciation",
+      "difficulty": 0.1,
+      "word_type": "number"
+    },
+    {
+      "id": "L0_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "desk",
+      "phonetic": "/desk/",
+      "image_description": "A simple wooden school desk.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "noun"
+    },
+    {
+      "id": "L0_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "green",
+      "phonetic": "/\u0261ri\u02d0n/",
+      "image_description": "A cartoon frog that is green.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L0_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "three",
+      "phonetic": "/\u03b8ri\u02d0/",
+      "image_description": "The number 3 next to three colorful balloons.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "number"
+    },
+    {
+      "id": "L0_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "yellow",
+      "phonetic": "/\u02c8jelo\u028a/",
+      "image_description": "A bright yellow sun smiling in the sky.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L0_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A bright red apple",
+      "options": [
+        "red",
+        "blue", 
+        "green",
+        "yellow"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.1,
+      "topic": "colors"
+    },
+    {
+      "id": "L0_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A simple blue ball",
+      "options": [
+        "red",
+        "blue",
+        "green", 
+        "yellow"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.1,
+      "topic": "colors"
+    },
+    {
+      "id": "L0_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "One birthday candle on a cake",
+      "options": [
+        "one",
+        "two",
+        "three",
+        "red"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition", 
+      "difficulty": 0.1,
+      "topic": "numbers"
+    },
+    {
+      "id": "L0_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A simple red pen on a white table",
+      "options": [
+        "book",
+        "pen",
+        "desk",
+        "one"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.1,
+      "topic": "objects"
+    },
+    {
+      "id": "L0_IS_005",
+      "mechanic": "image-single-choice-from-texts", 
+      "image_description": "A cartoon frog that is bright green",
+      "options": [
+        "red",
+        "blue",
+        "green",
+        "yellow"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.1,
+      "topic": "colors"
+    },
+    {
+      "id": "L0_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Two small birds sitting on a branch",
+      "options": [
+        "one", 
+        "two",
+        "three",
+        "blue"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.15,
+      "topic": "numbers"
+    },
+    {
+      "id": "L0_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A colorful children's storybook that is open",
+      "options": [
+        "pen",
+        "book", 
+        "desk",
+        "two"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.15,
+      "topic": "objects"
+    },
+    {
+      "id": "L0_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A bright yellow sun smiling in the sky",
+      "options": [
+        "red",
+        "blue",
+        "green",
+        "yellow"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.15,
+      "topic": "colors"
+    },
+    {
+      "id": "L0_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Three colorful balloons floating together",
+      "options": [
+        "one",
+        "two", 
+        "three",
+        "green"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.2,
+      "topic": "numbers"
+    },
+    {
+      "id": "L0_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A simple wooden school desk",
+      "options": [
+        "pen",
+        "book",
+        "desk",
+        "three"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.2,
+      "topic": "objects"
+    }
+  ],
+  "1": [
+    {
+      "id": "L1_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "cat",
+      "phonetic": "/k\u00e6t/",
+      "image_description": "A small, furry pet animal that says 'meow'.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "dog",
+      "phonetic": "/d\u0252\u0261/",
+      "image_description": "A pet animal that says 'woof' and wags its tail.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "apple",
+      "phonetic": "/\u02c8\u00e6p\u0259l/",
+      "image_description": "A round, red or green fruit that grows on a tree.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "milk",
+      "phonetic": "/m\u026alk/",
+      "image_description": "A white liquid that comes from cows, often in a carton.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "mother",
+      "phonetic": "/\u02c8m\u028c\u00f0\u0259r/",
+      "image_description": "A picture of a female parent, a mom.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "father",
+      "phonetic": "/\u02c8f\u0251\u02d0\u00f0\u0259r/",
+      "image_description": "A picture of a male parent, a dad.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "bird",
+      "phonetic": "/b\u025c\u02d0d/",
+      "image_description": "An animal with feathers and wings that can fly.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "fish",
+      "phonetic": "/f\u026a\u0283/",
+      "image_description": "An animal that lives in water and has fins.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "sister",
+      "phonetic": "/\u02c8s\u026ast\u0259r/",
+      "image_description": "A picture of a girl who has the same parents as you.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "bread",
+      "phonetic": "/bred/",
+      "image_description": "A food made from flour, often sliced for sandwiches.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L1_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A single red apple",
+      "options": [
+        "apple",
+        "milk",
+        "bread",
+        "water"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.2,
+      "topic": "food"
+    },
+    {
+      "id": "L1_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A brown dog wagging its tail",
+      "options": [
+        "cat",
+        "dog",
+        "bird",
+        "fish"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.2,
+      "topic": "animals"
+    },
+    {
+      "id": "L1_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A woman smiling and hugging a small child",
+      "options": [
+        "father",
+        "brother",
+        "mother",
+        "sister"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "family"
+    },
+    {
+      "id": "L1_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A glass of white milk",
+      "options": [
+        "water",
+        "bread",
+        "apple",
+        "milk"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "food"
+    },
+    {
+      "id": "L1_IS_005",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A striped cat sitting down",
+      "options": [
+        "cat",
+        "dog",
+        "fish",
+        "bird"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "animals"
+    },
+    {
+      "id": "L1_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A man smiling and holding a baby",
+      "options": [
+        "mother",
+        "father",
+        "sister",
+        "brother"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "family"
+    },
+    {
+      "id": "L1_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A loaf of sliced bread",
+      "options": [
+        "milk",
+        "water",
+        "bread",
+        "apple"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "food"
+    },
+    {
+      "id": "L1_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A small blue bird on a branch",
+      "options": [
+        "dog",
+        "cat",
+        "fish",
+        "bird"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.4,
+      "topic": "animals"
+    },
+    {
+      "id": "L1_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A young girl smiling, standing next to her slightly older brother",
+      "options": [
+        "sister",
+        "mother",
+        "father",
+        "brother"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.4,
+      "topic": "family"
+    },
+    {
+      "id": "L1_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A single goldfish swimming in a small fishbowl",
+      "options": [
+        "fish",
+        "cat",
+        "dog",
+        "bird"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.4,
+      "topic": "animals"
+    }
+  ],
+  "2": [
+    {
+      "id": "L2_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "happy",
+      "phonetic": "/\u02c8h\u00e6pi/",
+      "image_description": "A cartoon smiling sun.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L2_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "cat",
+      "phonetic": "/k\u00e6t/",
+      "image_description": "A cute cartoon cat.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "noun"
+    },
+    {
+      "id": "L2_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "sad",
+      "phonetic": "/s\u00e6d/",
+      "image_description": "A cartoon cloud that is crying.",
+      "skill": "Pronunciation",
+      "difficulty": 0.2,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L2_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "apple",
+      "phonetic": "/\u02c8\u00e6p\u0259l/",
+      "image_description": "A shiny red apple.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "noun"
+    },
+    {
+      "id": "L2_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "angry",
+      "phonetic": "/\u02c8\u00e6\u014b\u0261ri/",
+      "image_description": "A cartoon face with a red, angry expression.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L2_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "brush",
+      "phonetic": "/br\u028c\u0283/",
+      "image_description": "A child brushing their teeth with a toothbrush.",
+      "skill": "Pronunciation",
+      "difficulty": 0.3,
+      "word_type": "verb"
+    },
+    {
+      "id": "L2_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "cats",
+      "phonetic": "/k\u00e6ts/",
+      "image_description": "Three cute cartoon cats sitting together.",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "plural noun"
+    },
+    {
+      "id": "L2_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "school",
+      "phonetic": "/sku\u02d0l/",
+      "image_description": "A cartoon school building with a clock on top.",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "noun"
+    },
+    {
+      "id": "L2_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "excited",
+      "phonetic": "/\u026ak\u02c8sa\u026at\u026ad/",
+      "image_description": "A child jumping up and down with a very happy face.",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L2_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "children",
+      "phonetic": "/\u02c8t\u0283\u026aldr\u0259n/",
+      "image_description": "A diverse group of happy children holding hands.",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "plural noun"
+    },
+    {
+      "id": "L2_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A smiling, happy girl with wide eyes.",
+      "options": [
+        "She is happy.",
+        "She is sad.",
+        "She is angry.",
+        "She is tired."
+      ],
+      "correct_answer": 0,
+      "skill": "Reading",
+      "difficulty": 0.35,
+      "topic": "emotions"
+    },
+    {
+      "id": "L2_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy using a toothbrush to clean his teeth.",
+      "options": [
+        "He eats breakfast.",
+        "He goes to bed.",
+        "He brushes his teeth.",
+        "He plays with a toy."
+      ],
+      "correct_answer": 2,
+      "skill": "Reading",
+      "difficulty": 0.38,
+      "topic": "daily activities"
+    },
+    {
+      "id": "L2_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A single red apple.",
+      "options": [
+        "a apple",
+        "an apple",
+        "the apples",
+        "apples"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "topic": "articles"
+    },
+    {
+      "id": "L2_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Three yellow bananas.",
+      "options": [
+        "a banana",
+        "one banana",
+        "three banana",
+        "three bananas"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "topic": "plural forms"
+    },
+    {
+      "id": "L2_IS_005",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy with a frown and tears in his eyes.",
+      "options": [
+        "He is happy.",
+        "He is excited.",
+        "He is sad.",
+        "He is hungry."
+      ],
+      "correct_answer": 2,
+      "skill": "Reading",
+      "difficulty": 0.41,
+      "topic": "emotions"
+    },
+    {
+      "id": "L2_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A girl with a backpack walking into a school building.",
+      "options": [
+        "She wakes up.",
+        "She eats dinner.",
+        "She goes to school.",
+        "She reads a book."
+      ],
+      "correct_answer": 2,
+      "skill": "Reading",
+      "difficulty": 0.42,
+      "topic": "daily activities"
+    },
+    {
+      "id": "L2_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A single egg in a nest.",
+      "options": [
+        "an egg",
+        "a egg",
+        "eggs",
+        "the egg"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.43,
+      "topic": "articles"
+    },
+    {
+      "id": "L2_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Two children, a boy and a girl, playing with blocks.",
+      "options": [
+        "one child",
+        "two childs",
+        "two children",
+        "a childs"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.45,
+      "topic": "plural forms"
+    },
+    {
+      "id": "L2_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A person's two feet wearing socks.",
+      "options": [
+        "one foots",
+        "two foots",
+        "a feet",
+        "two feet"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.46,
+      "topic": "plural forms"
+    },
+    {
+      "id": "L2_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy in pajamas getting out of bed as the sun rises.",
+      "options": [
+        "He wakes up.",
+        "He eats lunch.",
+        "He goes to sleep.",
+        "He brushes his hair."
+      ],
+      "correct_answer": 0,
+      "skill": "Reading",
+      "difficulty": 0.48,
+      "topic": "daily activities"
+    },
+    {
+      "id": "L2_MC_001",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "I see ___ big, red car.",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "some"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.38,
+      "grammar_point": "articles"
+    },
+    {
+      "id": "L2_MC_002",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "When I get a present, I feel very ___.",
+      "options": [
+        "sad",
+        "happy",
+        "angry",
+        "tired"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary",
+      "difficulty": 0.39,
+      "grammar_point": "emotions"
+    },
+    {
+      "id": "L2_MC_003",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "We ___ our teeth every morning.",
+      "options": [
+        "brush",
+        "brushes",
+        "brushing",
+        "is brush"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "grammar_point": "present simple"
+    },
+    {
+      "id": "L2_MC_004",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "My friend has two ___.",
+      "options": [
+        "cat",
+        "cats",
+        "cates",
+        "caties"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "grammar_point": "plural forms"
+    },
+    {
+      "id": "L2_MC_005",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "She ___ to school on the bus.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "is go"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.41,
+      "grammar_point": "present simple third person"
+    },
+    {
+      "id": "L2_MC_006",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Look! It's ___ orange.",
+      "options": [
+        "a",
+        "some",
+        "the",
+        "an"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.41,
+      "grammar_point": "articles"
+    },
+    {
+      "id": "L2_MC_007",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "A duck has two ___.",
+      "options": [
+        "foot",
+        "foots",
+        "feet",
+        "feets"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.42,
+      "grammar_point": "plural forms irregular"
+    },
+    {
+      "id": "L2_MC_008",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "He ___ play football on Mondays.",
+      "options": [
+        "don't",
+        "isn't",
+        "doesn't",
+        "aren't"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.43,
+      "grammar_point": "present simple third person negative"
+    },
+    {
+      "id": "L2_MC_009",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "There are many ___ in the park.",
+      "options": [
+        "child",
+        "children",
+        "childs",
+        "childrens"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.44,
+      "grammar_point": "plural forms irregular"
+    },
+    {
+      "id": "L2_MC_010",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Look at ___ moon! It is so bright.",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "some"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.45,
+      "grammar_point": "articles"
+    }
+  ],
+  "3": [
+    {
+      "id": "L3_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "sunny",
+      "phonetic": "/\u02c8s\u028cni/",
+      "image_description": "Bright sun in the sky with a few small clouds",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L3_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "played",
+      "phonetic": "/ple\u026ad/",
+      "image_description": "Two happy children playing with a red ball in a park",
+      "skill": "Pronunciation",
+      "difficulty": 0.4,
+      "word_type": "verb"
+    },
+    {
+      "id": "L3_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "went",
+      "phonetic": "/went/",
+      "image_description": "A cartoon child with a backpack walking towards a school building",
+      "skill": "Pronunciation",
+      "difficulty": 0.45,
+      "word_type": "verb"
+    },
+    {
+      "id": "L3_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "reading",
+      "phonetic": "/\u02c8ri\u02d0d\u026a\u014b/",
+      "image_description": "A girl sitting comfortably on a chair reading a book",
+      "skill": "Pronunciation",
+      "difficulty": 0.45,
+      "word_type": "noun"
+    },
+    {
+      "id": "L3_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "cloudy",
+      "phonetic": "/\u02c8kla\u028adi/",
+      "image_description": "A sky completely filled with white and grey clouds",
+      "skill": "Pronunciation",
+      "difficulty": 0.5,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L3_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "bigger",
+      "phonetic": "/\u02c8b\u026a\u0261\u0259r/",
+      "image_description": "A large apple next to a small cherry, with an arrow pointing to the apple",
+      "skill": "Pronunciation",
+      "difficulty": 0.5,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L3_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "swimming",
+      "phonetic": "/\u02c8sw\u026am\u026a\u014b/",
+      "image_description": "A boy wearing goggles and swimming in a pool",
+      "skill": "Pronunciation",
+      "difficulty": 0.55,
+      "word_type": "noun"
+    },
+    {
+      "id": "L3_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "watched",
+      "phonetic": "/w\u0251\u02d0t\u0283t/",
+      "image_description": "A family sitting on a sofa and looking at a television",
+      "skill": "Pronunciation",
+      "difficulty": 0.55,
+      "word_type": "verb"
+    },
+    {
+      "id": "L3_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "guitar",
+      "phonetic": "/\u0261\u026a\u02c8t\u0251\u02d0r/",
+      "image_description": "An acoustic guitar leaning against a wall",
+      "skill": "Pronunciation",
+      "difficulty": 0.6,
+      "word_type": "noun"
+    },
+    {
+      "id": "L3_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "beautiful",
+      "phonetic": "/\u02c8bju\u02d0t\u026afl/",
+      "image_description": "A very colorful peacock with its feathers open",
+      "skill": "Pronunciation",
+      "difficulty": 0.6,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L3_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A bright sun in a clear blue sky with a few small white clouds.",
+      "options": [
+        "It's rainy.",
+        "It's windy.",
+        "It's sunny.",
+        "It's cloudy."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "weather"
+    },
+    {
+      "id": "L3_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A happy boy reading a book in a chair.",
+      "options": [
+        "He is swimming.",
+        "He is playing guitar.",
+        "He is reading.",
+        "He is sleeping."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.3,
+      "topic": "hobbies"
+    },
+    {
+      "id": "L3_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A large elephant next to a small mouse.",
+      "options": [
+        "The mouse is bigger.",
+        "The elephant is smaller.",
+        "The elephant is bigger.",
+        "The mouse is faster."
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "grammar_point": "comparatives"
+    },
+    {
+      "id": "L3_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A girl kicking a soccer ball into a goal. A calendar in the corner shows 'YESTERDAY'.",
+      "options": [
+        "She plays football now.",
+        "She played football yesterday.",
+        "She will play football tomorrow.",
+        "She is play football."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.5,
+      "grammar_point": "past simple"
+    },
+    {
+      "id": "L3_IS_005",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy and a girl at a movie theater, holding popcorn. A ticket stub in the corner says 'LAST FRIDAY'.",
+      "options": [
+        "They go to the cinema.",
+        "They are at the cinema.",
+        "They were at the cinema.",
+        "They will be at the cinema."
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.5,
+      "grammar_point": "past simple (to be)"
+    },
+    {
+      "id": "L3_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy waking up and stretching in bed. The sun is rising outside his window.",
+      "options": [
+        "He ate breakfast.",
+        "He went to school.",
+        "He brushed his teeth.",
+        "He woke up."
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.6,
+      "topic": "daily routines"
+    },
+    {
+      "id": "L3_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A family eating dinner at a table last night. The moon is visible through the window.",
+      "options": [
+        "They eats dinner.",
+        "They will eat dinner.",
+        "They is eating dinner.",
+        "They ate dinner."
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "past simple (irregular verb)"
+    },
+    {
+      "id": "L3_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A plain grey car next to a shiny, decorated, colorful car.",
+      "options": [
+        "The grey car is faster.",
+        "The colorful car is more beautiful.",
+        "The grey car is bigger.",
+        "The colorful car is older."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "comparatives (long adjectives)"
+    },
+    {
+      "id": "L3_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A sad-looking boy yesterday. A calendar page for 'YESTERDAY' is next to him.",
+      "options": [
+        "He is happy today.",
+        "He were sad yesterday.",
+        "He was sad yesterday.",
+        "He will be sad tomorrow."
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "past simple (to be)"
+    },
+    {
+      "id": "L3_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Children walking into a school building. A calendar page shows 'LAST MONDAY'.",
+      "options": [
+        "They went to school.",
+        "They go to school.",
+        "They are going to school.",
+        "They goed to school."
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "grammar_point": "past simple (irregular verb)"
+    },
+    {
+      "id": "L3_MC_001",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Yesterday, the weather ___ sunny and warm.",
+      "options": [
+        "is",
+        "am",
+        "was",
+        "were"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "grammar_point": "past simple be"
+    },
+    {
+      "id": "L3_MC_002",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "They ___ happy to see their friends at the party.",
+      "options": [
+        "is",
+        "am",
+        "was",
+        "were"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.4,
+      "grammar_point": "past simple be"
+    },
+    {
+      "id": "L3_MC_003",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "He loves ___ the guitar after school.",
+      "options": [
+        "play",
+        "playing",
+        "plays",
+        "played"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary",
+      "difficulty": 0.4,
+      "topic": "hobbies"
+    },
+    {
+      "id": "L3_MC_004",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Last weekend, I ___ my grandparents.",
+      "options": [
+        "visit",
+        "visits",
+        "visited",
+        "visiting"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.5,
+      "grammar_point": "past simple regular verbs"
+    },
+    {
+      "id": "L3_MC_005",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "She ___ to the cinema with her family yesterday.",
+      "options": [
+        "go",
+        "goes",
+        "going",
+        "went"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.5,
+      "grammar_point": "past simple irregular verbs"
+    },
+    {
+      "id": "L3_MC_006",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "A lion is ___ than a cat.",
+      "options": [
+        "strong",
+        "stronger",
+        "strongest",
+        "more strong"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.5,
+      "grammar_point": "comparatives"
+    },
+    {
+      "id": "L3_MC_007",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "It was very ___ yesterday, so we flew our kites.",
+      "options": [
+        "sunny",
+        "rainy",
+        "cloudy",
+        "windy"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary",
+      "difficulty": 0.5,
+      "topic": "weather"
+    },
+    {
+      "id": "L3_MC_008",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "This dress is ___ beautiful than that one.",
+      "options": [
+        "much",
+        "most",
+        "more",
+        "many"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "comparatives"
+    },
+    {
+      "id": "L3_MC_009",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "I ___ see my friend at school today because he was sick.",
+      "options": [
+        "don't",
+        "doesn't",
+        "didn't",
+        "not"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "past simple negative"
+    },
+    {
+      "id": "L3_MC_010",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "___ you have a good time on your holiday?",
+      "options": [
+        "Do",
+        "Does",
+        "Did",
+        "Are"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "past simple questions"
+    }
+  ],
+  "4": [
+    {
+      "id": "L4_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "teacher",
+      "phonetic": "/\u02c8ti\u02d0t\u0283\u0259r/",
+      "image_description": "A person standing in front of a chalkboard teaching students.",
+      "skill": "Pronunciation",
+      "difficulty": 0.55,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "should",
+      "phonetic": "/\u0283\u028ad/",
+      "image_description": "A checklist with a green checkmark next to an item.",
+      "skill": "Pronunciation",
+      "difficulty": 0.55,
+      "word_type": "modal verb"
+    },
+    {
+      "id": "L4_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "artist",
+      "phonetic": "/\u02c8\u0251\u02d0rt\u026ast/",
+      "image_description": "A person holding a palette and a paintbrush, painting on a canvas.",
+      "skill": "Pronunciation",
+      "difficulty": 0.6,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "finished",
+      "phonetic": "/\u02c8f\u026an\u026a\u0283t/",
+      "image_description": "A child smiling and showing a completed drawing.",
+      "skill": "Pronunciation",
+      "difficulty": 0.6,
+      "word_type": "verb (past participle)"
+    },
+    {
+      "id": "L4_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "engineer",
+      "phonetic": "/\u02ccend\u0292\u026a\u02c8n\u026ar/",
+      "image_description": "A person wearing a hard hat and looking at blueprints for a building.",
+      "skill": "Pronunciation",
+      "difficulty": 0.65,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "pollution",
+      "phonetic": "/p\u0259\u02c8lu\u02d0\u0283n/",
+      "image_description": "Smoke coming out of factory chimneys.",
+      "skill": "Pronunciation",
+      "difficulty": 0.65,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "recycling",
+      "phonetic": "/\u02ccri\u02d0\u02c8sa\u026akl\u026a\u014b/",
+      "image_description": "A green bin with the recycling symbol on it, full of plastic bottles.",
+      "skill": "Pronunciation",
+      "difficulty": 0.65,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "traveled",
+      "phonetic": "/\u02c8tr\u00e6vld/",
+      "image_description": "A suitcase with travel stickers next to a globe and a passport.",
+      "skill": "Pronunciation",
+      "difficulty": 0.7,
+      "word_type": "verb (past participle)"
+    },
+    {
+      "id": "L4_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "environment",
+      "phonetic": "/\u026an\u02c8va\u026ar\u0259nm\u0259nt/",
+      "image_description": "A lush green forest with a clean river flowing through it.",
+      "skill": "Pronunciation",
+      "difficulty": 0.7,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "conservation",
+      "phonetic": "/\u02cck\u0251\u02d0ns\u0259r\u02c8ve\u026a\u0283n/",
+      "image_description": "Two hands carefully holding a small green plant sprouting from the earth.",
+      "skill": "Pronunciation",
+      "difficulty": 0.75,
+      "word_type": "noun"
+    },
+    {
+      "id": "L4_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A woman wearing a white coat and a stethoscope around her neck, smiling.",
+      "options": [
+        "She is an engineer.",
+        "She is a teacher.",
+        "She is a doctor.",
+        "She is an artist."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.5,
+      "topic": "professions"
+    },
+    {
+      "id": "L4_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A young boy proudly holding up a colorful drawing he has just completed.",
+      "options": [
+        "He is starting his drawing.",
+        "He has finished his drawing.",
+        "He have finished his drawing.",
+        "He will finish his drawing."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.55,
+      "topic": "present perfect"
+    },
+    {
+      "id": "L4_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A person putting a plastic bottle into a special green bin with a recycling symbol on it.",
+      "options": [
+        "He is throwing trash on the ground.",
+        "He is causing pollution.",
+        "He is planting a tree.",
+        "He is recycling the bottle."
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.55,
+      "topic": "environment"
+    },
+    {
+      "id": "L4_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A traffic sign that shows a bicycle inside a red circle with a red line through it.",
+      "options": [
+        "You can ride a bike here.",
+        "You should ride a bike here.",
+        "You must not ride a bike here.",
+        "You have ridden a bike here."
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "topic": "modal verbs"
+    },
+    {
+      "id": "L4_IS_005",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "An empty plate with only a few crumbs left on it.",
+      "options": [
+        "The person has just started eating.",
+        "The person hasn't touched the food.",
+        "The person has eaten everything.",
+        "The person is still eating."
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "topic": "present perfect"
+    },
+    {
+      "id": "L4_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A person wearing a yellow hard hat and looking at building plans (blueprints) on a construction site.",
+      "options": [
+        "This is an artist.",
+        "This is a doctor.",
+        "This is an engineer.",
+        "This is a teacher."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary Recognition",
+      "difficulty": 0.6,
+      "topic": "professions"
+    },
+    {
+      "id": "L4_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A factory with dark smoke coming out of its chimneys, making the sky look grey.",
+      "options": [
+        "The factory is cleaning the air.",
+        "The factory is causing air pollution.",
+        "The factory uses clean energy.",
+        "The factory is a good example of conservation."
+      ],
+      "correct_answer": 1,
+      "skill": "Reading Comprehension",
+      "difficulty": 0.65,
+      "topic": "environment"
+    },
+    {
+      "id": "L4_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A student in a library with a sign that says 'QUIET PLEASE'.",
+      "options": [
+        "You can shout in the library.",
+        "You must not be loud in the library.",
+        "You have talked in the library.",
+        "You might be loud in the library."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.65,
+      "topic": "modal verbs"
+    },
+    {
+      "id": "L4_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A suitcase that is open and packed with clothes, a passport is sitting on top.",
+      "options": [
+        "Someone has just unpacked.",
+        "Someone has not packed yet.",
+        "Someone has forgotten to pack.",
+        "Someone has already packed for a trip."
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "topic": "present perfect"
+    },
+    {
+      "id": "L4_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A group of children planting young trees in a field.",
+      "options": [
+        "They are polluting the forest.",
+        "They are helping with conservation.",
+        "They have cut down all the trees.",
+        "They should not be in the park."
+      ],
+      "correct_answer": 1,
+      "skill": "Reading Comprehension",
+      "difficulty": 0.7,
+      "topic": "environment"
+    },
+    {
+      "id": "L4_MC_001",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "I ___ my homework already, so I can play outside.",
+      "options": [
+        "has finished",
+        "have finished",
+        "am finishing",
+        "did finish"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.58,
+      "grammar_point": "present perfect"
+    },
+    {
+      "id": "L4_MC_002",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "My dad is an engineer. He ___ many bridges in his career.",
+      "options": [
+        "has built",
+        "have built",
+        "is building",
+        "builds"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.59,
+      "grammar_point": "present perfect third person"
+    },
+    {
+      "id": "L4_MC_003",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "You look tired. I think you ___ go to bed earlier.",
+      "options": [
+        "can",
+        "must",
+        "should",
+        "have"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "modal verbs (advice)"
+    },
+    {
+      "id": "L4_MC_004",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "To help the environment, we ___ try to reduce pollution by walking more.",
+      "options": [
+        "has to",
+        "can",
+        "must be",
+        "have"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.6,
+      "grammar_point": "modal verbs (suggestion)"
+    },
+    {
+      "id": "L4_MC_005",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "___ you ever visited another country with your family?",
+      "options": [
+        "Did",
+        "Are",
+        "Have",
+        "Do"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.61,
+      "grammar_point": "present perfect (questions)"
+    },
+    {
+      "id": "L4_MC_006",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The teacher ___ the new words yet, so we don't know what they mean.",
+      "options": [
+        "hasn't explained",
+        "haven't explained",
+        "didn't explain",
+        "not explained"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.62,
+      "grammar_point": "present perfect (negative)"
+    },
+    {
+      "id": "L4_MC_007",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "A doctor told me I ___ drink lots of water to feel better.",
+      "options": [
+        "can",
+        "may",
+        "could",
+        "must"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.62,
+      "grammar_point": "modal verbs (obligation)"
+    },
+    {
+      "id": "L4_MC_008",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Conservation is important. For example, ___ paper helps save trees.",
+      "options": [
+        "recycle",
+        "recycled",
+        "recycling",
+        "recycles"
+      ],
+      "correct_answer": 2,
+      "skill": "Reading",
+      "difficulty": 0.63,
+      "grammar_point": "gerunds"
+    },
+    {
+      "id": "L4_MC_009",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "That artist has painted beautiful pictures ___ he was a child.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "during"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.64,
+      "grammar_point": "present perfect (for/since)"
+    },
+    {
+      "id": "L4_MC_010",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "My sister loves to travel. She ___ to three different continents!",
+      "options": [
+        "have gone",
+        "has gone",
+        "have been",
+        "has been"
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.65,
+      "grammar_point": "present perfect (experience)"
+    }
+  ],
+  "5": [
+    {
+      "id": "L5_WP_001",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "opinion",
+      "phonetic": "/\u0259\u02c8p\u026anj\u0259n/",
+      "image_description": "A cartoon child with a speech bubble containing a thumbs-up icon.",
+      "skill": "Pronunciation",
+      "difficulty": 0.6,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_002",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "conditional",
+      "phonetic": "/k\u0259n\u02c8d\u026a\u0283\u0259nl/",
+      "image_description": "A simple flowchart showing a box with 'If it rains...' pointing to another box with '...I will take an umbrella'.",
+      "skill": "Pronunciation",
+      "difficulty": 0.65,
+      "word_type": "adjective"
+    },
+    {
+      "id": "L5_WP_003",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "justice",
+      "phonetic": "/\u02c8d\u0292\u028cst\u026as/",
+      "image_description": "A set of balanced scales, representing the scales of justice.",
+      "skill": "Pronunciation",
+      "difficulty": 0.65,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_004",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "fluently",
+      "phonetic": "/\u02c8flu\u02d0\u0259ntli/",
+      "image_description": "A person speaking with smooth, flowing sound waves coming from their mouth.",
+      "skill": "Pronunciation",
+      "difficulty": 0.7,
+      "word_type": "adverb"
+    },
+    {
+      "id": "L5_WP_005",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "innovation",
+      "phonetic": "/\u02cc\u026an\u0259\u02c8ve\u026a\u0283n/",
+      "image_description": "A glowing lightbulb with small gears turning inside it.",
+      "skill": "Pronunciation",
+      "difficulty": 0.7,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_006",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "decision",
+      "phonetic": "/d\u026a\u02c8s\u026a\u0292n/",
+      "image_description": "A road sign with arrows pointing in two different directions.",
+      "skill": "Pronunciation",
+      "difficulty": 0.7,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_007",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "democracy",
+      "phonetic": "/d\u026a\u02c8m\u0252kr\u0259si/",
+      "image_description": "A cartoon hand putting a voting slip into a ballot box.",
+      "skill": "Pronunciation",
+      "difficulty": 0.75,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_008",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "environment",
+      "phonetic": "/\u026an\u02c8va\u026ar\u0259nm\u0259nt/",
+      "image_description": "A globe showing land, oceans, and green trees.",
+      "skill": "Pronunciation",
+      "difficulty": 0.75,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_009",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "consequence",
+      "phonetic": "/\u02c8k\u0252ns\u026akw\u0259ns/",
+      "image_description": "A line of dominoes where the first one is falling and about to hit the next one.",
+      "skill": "Pronunciation",
+      "difficulty": 0.8,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_WP_010",
+      "mechanic": "word-pronunciation-practice",
+      "target_word": "knowledge",
+      "phonetic": "/\u02c8n\u0252l\u026ad\u0292/",
+      "image_description": "An open book with a bright light shining out from its pages.",
+      "skill": "Pronunciation",
+      "difficulty": 0.8,
+      "word_type": "noun"
+    },
+    {
+      "id": "L5_IS_001",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A new house under construction with workers on the roof.",
+      "options": [
+        "This house is built by the workers.",
+        "This house is being built by the workers.",
+        "The workers was building this house.",
+        "This house has being built by workers."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.68,
+      "topic": "passive voice"
+    },
+    {
+      "id": "L5_IS_002",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A very happy boy holding an exam paper with a big A+ on it. He is smiling.",
+      "options": [
+        "The exam was over the moon.",
+        "The exam was under the weather.",
+        "The exam was a piece of cake.",
+        "The exam broke the ice."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.69,
+      "topic": "idioms"
+    },
+    {
+      "id": "L5_IS_003",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A girl holding an umbrella, looking up at a dark, cloudy sky.",
+      "options": [
+        "If it rains, she will use her umbrella.",
+        "If it rains, she would use her umbrella.",
+        "If it had rained, she will use her umbrella.",
+        "If it rained, she used her umbrella."
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "topic": "conditionals"
+    },
+    {
+      "id": "L5_IS_004",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "An image of the famous Mona Lisa painting in a museum.",
+      "options": [
+        "Leonardo da Vinci was painted by the Mona Lisa.",
+        "The Mona Lisa has painted by Leonardo da Vinci.",
+        "The Mona Lisa painted Leonardo da Vinci.",
+        "The Mona Lisa was painted by Leonardo da Vinci."
+      ],
+      "correct_answer": 3,
+      "skill": "Grammar",
+      "difficulty": 0.7,
+      "topic": "passive voice"
+    },
+    {
+      "id": "L5_IS_005",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A cartoon drawing of the scales of justice, perfectly balanced.",
+      "options": [
+        "This is a symbol of innovation.",
+        "This is a symbol of democracy.",
+        "This is a symbol of justice.",
+        "This is a symbol of friendship."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.71,
+      "topic": "abstract concepts"
+    },
+    {
+      "id": "L5_IS_006",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A boy looking out his window at the moon, dreaming of being an astronaut.",
+      "options": [
+        "If he was an astronaut, he will go to the moon.",
+        "If he were an astronaut, he would go to the moon.",
+        "If he is an astronaut, he would go to the moon.",
+        "If he had been an astronaut, he went to the moon."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.72,
+      "topic": "conditionals"
+    },
+    {
+      "id": "L5_IS_007",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "At a kids' party, one shy boy offers a board game to another shy girl to start playing.",
+      "options": [
+        "He is trying to hit the books.",
+        "He is trying to spill the beans.",
+        "He is trying to call it a day.",
+        "He is trying to break the ice."
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary",
+      "difficulty": 0.72,
+      "topic": "idioms"
+    },
+    {
+      "id": "L5_IS_008",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "Students in a classroom are raising their hands to vote for a class president.",
+      "options": [
+        "This is an example of classroom justice.",
+        "This is an example of classroom innovation.",
+        "This is an example of classroom democracy.",
+        "This is an example of classroom drama."
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.73,
+      "topic": "abstract concepts"
+    },
+    {
+      "id": "L5_IS_009",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A sad girl looking at her broken bicycle on the pavement.",
+      "options": [
+        "If she were more careful, she wouldn't crash her bike.",
+        "If she had been more careful, she wouldn't have crashed her bike.",
+        "If she is more careful, she wouldn't have crashed her bike.",
+        "If she had been more careful, she won't crash her bike."
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.74,
+      "topic": "conditionals"
+    },
+    {
+      "id": "L5_IS_010",
+      "mechanic": "image-single-choice-from-texts",
+      "image_description": "A large window of a modern building that is perfectly clean and sparkling.",
+      "options": [
+        "The window was cleaned yesterday.",
+        "The window has been cleaning yesterday.",
+        "The window cleaned yesterday.",
+        "The window has being cleaned yesterday."
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.75,
+      "topic": "passive voice"
+    },
+    {
+      "id": "L5_MC_001",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "If I ___ a king, I would build a huge castle made of chocolate.",
+      "options": [
+        "am",
+        "was",
+        "were",
+        "be"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.68,
+      "grammar_point": "second conditional"
+    },
+    {
+      "id": "L5_MC_002",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The Harry Potter books ___ by J.K. Rowling.",
+      "options": [
+        "wrote",
+        "were written",
+        "have written",
+        "was writing"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.69,
+      "grammar_point": "passive voice past simple"
+    },
+    {
+      "id": "L5_MC_003",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The final exam was surprisingly easy. It was a ___!",
+      "options": [
+        "heavy rain",
+        "piece of cake",
+        "big apple",
+        "night owl"
+      ],
+      "correct_answer": 1,
+      "skill": "Vocabulary",
+      "difficulty": 0.7,
+      "topic": "idioms"
+    },
+    {
+      "id": "L5_MC_004",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "If she had remembered her umbrella, she ___ wet in the rain.",
+      "options": [
+        "wouldn't get",
+        "didn't get",
+        "wouldn't have gotten",
+        "hasn't gotten"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.71,
+      "grammar_point": "third conditional"
+    },
+    {
+      "id": "L5_MC_005",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Every year, a special award ___ to the student with the best science project.",
+      "options": [
+        "is given",
+        "gives",
+        "was given",
+        "gave"
+      ],
+      "correct_answer": 0,
+      "skill": "Grammar",
+      "difficulty": 0.71,
+      "grammar_point": "passive voice present simple"
+    },
+    {
+      "id": "L5_MC_006",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The invention of the smartphone was a major ___ in technology.",
+      "options": [
+        "democracy",
+        "opinion",
+        "justice",
+        "innovation"
+      ],
+      "correct_answer": 3,
+      "skill": "Vocabulary",
+      "difficulty": 0.72,
+      "topic": "abstract concepts"
+    },
+    {
+      "id": "L5_MC_007",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "No one knew each other at the party, so we played a game to ___.",
+      "options": [
+        "spill the beans",
+        "hit the books",
+        "break the ice",
+        "cost an arm and a leg"
+      ],
+      "correct_answer": 2,
+      "skill": "Vocabulary",
+      "difficulty": 0.72,
+      "topic": "idioms"
+    },
+    {
+      "id": "L5_MC_008",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "The new library ___ next month by the town's mayor.",
+      "options": [
+        "will open",
+        "is opening",
+        "will be opened",
+        "has been opened"
+      ],
+      "correct_answer": 2,
+      "skill": "Grammar",
+      "difficulty": 0.73,
+      "grammar_point": "passive voice future simple"
+    },
+    {
+      "id": "L5_MC_009",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "Ensuring that everyone is treated fairly is a key principle of ___.",
+      "options": [
+        "justice",
+        "creation",
+        "gravity",
+        "innovation"
+      ],
+      "correct_answer": 0,
+      "skill": "Vocabulary",
+      "difficulty": 0.74,
+      "topic": "abstract concepts"
+    },
+    {
+      "id": "L5_MC_010",
+      "mechanic": "multiple-choice-text-text",
+      "sentence": "If the message ___ earlier, we would have avoided the traffic jam.",
+      "options": [
+        "was sent",
+        "had been sent",
+        "has been sent",
+        "is sent"
+      ],
+      "correct_answer": 1,
+      "skill": "Grammar",
+      "difficulty": 0.75,
+      "grammar_point": "third conditional passive"
+    }
+  ]
+}

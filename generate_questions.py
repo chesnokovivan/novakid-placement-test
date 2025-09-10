@@ -113,6 +113,25 @@ For 'sentence-scramble':
   "grammar_point": "sentence structure"
 }}
 
+For 'audio-category-sorting':
+{{
+  "id": "L{level}_ACS_001",
+  "mechanic": "audio-category-sorting",
+  "categories": [
+    {{"name": "Animals", "image_description": "Various cute animals like cats, dogs, birds"}},
+    {{"name": "Food", "image_description": "Delicious food items like fruits, vegetables, snacks"}}
+  ],
+  "audio_items": [
+    {{"word": "cat", "category_index": 0}},
+    {{"word": "apple", "category_index": 1}},
+    {{"word": "dog", "category_index": 0}},
+    {{"word": "banana", "category_index": 1}}
+  ],
+  "skill": "Vocabulary Categorization",
+  "difficulty": 0.3,
+  "topic": "category sorting"
+}}
+
 Requirements:
 - Age-appropriate vocabulary and topics
 - Gradually increasing difficulty within the level
@@ -139,6 +158,7 @@ def generate_questions():
             level_mechanics.append('word-pronunciation-practice')
             level_mechanics.append('audio-single-choice-from-images')
             level_mechanics.append('sentence-pronunciation-practice')
+            level_mechanics.append('audio-category-sorting')
         if level >= 1:
             level_mechanics.append('image-single-choice-from-texts')
             level_mechanics.append('sentence-scramble')
@@ -262,6 +282,26 @@ def create_fallback_questions(level, mechanic):
                 "skill": "Grammar",
                 "difficulty": 0.3,
                 "grammar_point": "be verb sentence"
+            }
+        ]
+    elif mechanic == 'audio-category-sorting':
+        fallback = [
+            {
+                "id": f"L{level}_ACS_FALLBACK_001",
+                "mechanic": "audio-category-sorting",
+                "categories": [
+                    {"name": "Animals", "image_description": "Various cute animals like cats, dogs, birds"},
+                    {"name": "Food", "image_description": "Delicious food items like fruits, vegetables, snacks"}
+                ],
+                "audio_items": [
+                    {"word": "cat", "category_index": 0},
+                    {"word": "apple", "category_index": 1},
+                    {"word": "dog", "category_index": 0},
+                    {"word": "banana", "category_index": 1}
+                ],
+                "skill": "Vocabulary Categorization",
+                "difficulty": 0.3,
+                "topic": "category sorting"
             }
         ]
     

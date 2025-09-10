@@ -6,12 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is an AI-powered English placement test system for Novakid (EdTech company). The system uses adaptive testing to determine student English proficiency levels (0-5, mapped to CEFR) through three question mechanics: multiple choice grammar, word pronunciation practice, and image-text matching.
 
-**Recent Major Updates:**
-- ✅ Fixed duplicate media rendering issues (images/audio no longer duplicate on button clicks)
-- ✅ Added kid-friendly results screen with colorful badges, star ratings, and celebration elements
-- ✅ Integrated real media APIs (Unsplash for images, Novakid TTS for audio)
-- ✅ Enhanced UI with better styling and visual feedback for children ages 4-12
-
 ## Development Commands
 
 ### Environment Setup
@@ -21,7 +15,7 @@ pip install -r requirements.txt
 
 ### Question Bank Generation
 ```bash
-python generate_questions.py
+python3 generate_questions.py
 ```
 
 ### Run Application
@@ -53,13 +47,14 @@ The system follows a modular architecture:
 
 The AdaptiveEngine uses a calibration phase (3 randomized questions across levels with mechanic diversity) followed by performance-responsive adaptive selection. Features include:
 
+- **Category Balance:** 50/50 audio vs text mechanic distribution via coin-flip selection
 - **Mechanic Diversity:** Tracks recent question types to prevent boring streaks
 - **Dynamic Exploration:** High performers (90%+) get expanded level range testing  
 - **Aggressive Progression:** Perfect performance (100% over 4+ questions) triggers 2-level jumps
 - **Ceiling Exploration:** End-test push ensures advanced students get Level 5 assessment
 - **Standard Adjustments:** 80% accuracy (level up), 30% accuracy (level down)
 
-This ensures proper placement from beginners to advanced students while maintaining engaging variety.
+This ensures proper placement from beginners to advanced students while maintaining engaging variety and balanced question types.
 
 ## Key Configuration
 
