@@ -6,9 +6,19 @@ from typing import Dict, List, Optional
 class AdaptiveEngine:
     """Simple adaptive testing engine with deterministic rules"""
     
-    def __init__(self, questions_file: str):
+    def __init__(self, questions_file: str, 
+                 early_test_questions: int = 5,
+                 max_exploration_distance: int = 2,
+                 cooldown_questions: int = 2,
+                 momentum_decay: float = 0.7):
         with open(questions_file) as f:
             self.question_bank = json.load(f)
+        
+        # Configurable parameters
+        self.early_test_questions = early_test_questions  # Questions before full exploration
+        self.max_exploration_distance = max_exploration_distance  # Max level range expansion
+        self.cooldown_questions = cooldown_questions  # Questions to wait after level change
+        self.momentum_decay = momentum_decay  # Momentum reduction after level jumps
         
         self.current_level = 1  # Start at Level 1
         self.performance_window = []  # Track last N answers
@@ -17,6 +27,11 @@ class AdaptiveEngine:
         self.calibration_complete = False
         self.calibration_count = 0
         self.recent_mechanics = []  # Track last few mechanics for diversity
+        
+        # Momentum system variables
+        self.level_momentum = 0.0  # Track direction and speed of level changes (-2.0 to +2.0)
+        self.consecutive_successes = 0  # Track consecutive correct answers
+        self.level_change_cooldown = 0  # Prevent rapid oscillation between levels
         
         # Mechanic categories for dynamic balancing
         self.AUDIO_MECHANICS = [
@@ -59,6 +74,13 @@ class AdaptiveEngine:
             diverse_mechanics = [m for m in category_mechanics if m not in self.recent_mechanics[-2:]]
             mechanics_to_try = diverse_mechanics if diverse_mechanics else category_mechanics
             
+            # Debug: Show mechanic selection process
+            print(f"Category: {'AUDIO' if attempt_audio else 'TEXT'}, Level {self.current_level}")
+            print(f"  Available mechanics: {category_mechanics}")
+            print(f"  Recent mechanics: {self.recent_mechanics[-2:] if len(self.recent_mechanics) >= 2 else self.recent_mechanics}")
+            print(f"  Diverse mechanics: {diverse_mechanics}")
+            print(f"  Mechanics to try: {mechanics_to_try}")
+            
             # Also consider preferred mechanics if they overlap
             if preferred_mechanics:
                 preferred_in_category = [m for m in preferred_mechanics if m in mechanics_to_try]
@@ -86,6 +108,8 @@ class AdaptiveEngine:
                 question = random.choice(all_candidates)
                 self.used_questions.add(question['id'])
                 self._track_mechanic_usage(question['mechanic'])
+                # Debug: Show what mechanic was selected
+                print(f"Selected mechanic: {question['mechanic']} at level {question.get('assigned_level', 'unknown')}")
                 return question
         
         return None
@@ -147,52 +171,66 @@ class AdaptiveEngine:
         return None
     
     def _get_available_levels(self) -> List[int]:
-        """Get pool of levels to select from based on performance - with dynamic exploration"""
+        """Conservative level selection with momentum consideration and progressive range expansion"""
         base_levels = [self.current_level]
         
-        # Calculate recent accuracy for performance-responsive exploration
-        recent_accuracy = 0
-        if len(self.performance_window) >= 2:
-            recent_accuracy = sum(self.performance_window[-2:]) / 2
-        
-        # Dynamic range expansion based on performance patterns
-        if len(self.performance_window) >= 3:
-            last3_accuracy = sum(self.performance_window[-3:]) / 3
-            
-            # High performers get expanded exploration range
-            if last3_accuracy >= 0.9:  # 90%+ recent performance
-                # Perfect or near-perfect: explore aggressively upward
-                for level in range(self.current_level, min(6, self.current_level + 4)):
-                    if level not in base_levels:
-                        base_levels.append(level)
-            elif last3_accuracy >= 0.75:  # 75%+ recent performance
-                # Strong performers: moderate upward exploration
-                for level in range(self.current_level, min(6, self.current_level + 2)):
-                    if level not in base_levels:
-                        base_levels.append(level)
-        
-        # Standard exploration for moderate/poor performers
-        if recent_accuracy >= 0.75 and self.current_level < 5:
-            if (self.current_level + 1) not in base_levels:
+        # Don't explore aggressively until we have stability (early test phase)
+        if len(self.question_history) < self.early_test_questions:
+            # Early test: stay very close to current level
+            if self.current_level > 0:
+                base_levels.append(self.current_level - 1)
+            if self.current_level < 5:
                 base_levels.append(self.current_level + 1)
-        elif recent_accuracy <= 0.25 and self.current_level > 0:
-            if (self.current_level - 1) not in base_levels:
-                base_levels.append(self.current_level - 1)
+            return sorted(base_levels)
         
-        # Always include variety for average performers
-        if len(self.performance_window) < 3 or sum(self.performance_window[-3:]) / 3 < 0.75:
-            if self.current_level > 0 and (self.current_level - 1) not in base_levels:
+        # Calculate momentum-adjusted exploration distance
+        recent_accuracy = sum(self.performance_window[-3:]) / 3 if len(self.performance_window) >= 3 else 0
+        
+        # Progressive exploration distance based on test progress
+        questions_answered = len(self.question_history)
+        max_exploration = min(self.max_exploration_distance, 1 + questions_answered // 5)  # Gradually increase range
+        
+        # Momentum-based exploration adjustments
+        if recent_accuracy >= 0.8 and self.level_momentum > 0:
+            # Good performance with positive momentum: explore upward, but limited
+            upper_bound = min(5, self.current_level + max_exploration)
+            for level in range(self.current_level + 1, upper_bound + 1):
+                base_levels.append(level)
+        elif recent_accuracy <= 0.4 and self.level_momentum < 0:
+            # Poor performance with negative momentum: explore downward  
+            lower_bound = max(0, self.current_level - max_exploration)
+            for level in range(lower_bound, self.current_level):
+                base_levels.append(level)
+        else:
+            # Mixed performance or neutral momentum: limited exploration
+            if self.current_level > 0:
                 base_levels.append(self.current_level - 1)
-            if self.current_level < 5 and (self.current_level + 1) not in base_levels:
+            if self.current_level < 5:
                 base_levels.append(self.current_level + 1)
         
-        # End-test ceiling push for high performers
-        questions_remaining = 15 - len(self.question_history)
-        if questions_remaining <= 5 and len(self.question_history) > 0:
+        # Level 5 exploration phase - ensure high performers get adequate Level 5 testing
+        if self.current_level >= 4 and len(self.question_history) >= 8:
             overall_accuracy = sum(1 for h in self.question_history if h['correct']) / len(self.question_history)
             if overall_accuracy >= 0.85:
-                # Push toward highest levels in final questions
-                max_level = min(5, self.current_level + 2)
+                # Force Level 5 inclusion for comprehensive assessment
+                if 5 not in base_levels:
+                    base_levels.append(5)
+                
+                # If already at Level 5, prioritize staying there for thorough assessment
+                if self.current_level == 5 and recent_accuracy >= 0.5:  # Lower threshold for Level 5 retention
+                    # Remove lower levels to focus on Level 5 assessment (keep Level 4 as backup)
+                    base_levels = [level for level in base_levels if level >= 4]
+                    # Ensure Level 5 is prioritized
+                    if 5 not in base_levels:
+                        base_levels.append(5)
+        
+        # End-test ceiling push (more conservative than before)
+        questions_remaining = 15 - len(self.question_history)
+        if questions_remaining <= 3 and len(self.question_history) > 0:
+            overall_accuracy = sum(1 for h in self.question_history if h['correct']) / len(self.question_history)
+            if overall_accuracy >= 0.85 and self.level_momentum > 1.0:
+                # Only push to next level, not jumping multiple levels
+                max_level = min(5, self.current_level + 1)
                 if max_level not in base_levels:
                     base_levels.append(max_level)
         
@@ -216,7 +254,7 @@ class AdaptiveEngine:
             self.recent_mechanics.pop(0)
     
     def update_performance(self, question_id: str, correct: bool, response_time: float = 0):
-        """Update performance tracking and adjust level"""
+        """Smoother level adjustments with momentum and cooldown system"""
         
         # Add to history
         self.question_history.append({
@@ -231,25 +269,67 @@ class AdaptiveEngine:
         if len(self.performance_window) > 5:
             self.performance_window.pop(0)
         
-        # Adjust level based on performance with aggressive jumping for perfect performers
+        # Update momentum based on performance
+        if correct:
+            self.consecutive_successes += 1
+            self.level_momentum = min(self.level_momentum + 0.3, 2.0)
+        else:
+            self.consecutive_successes = 0
+            self.level_momentum = max(self.level_momentum - 0.5, -2.0)
+        
+        # Handle cooldown - don't change levels during cooldown period
+        if self.level_change_cooldown > 0:
+            self.level_change_cooldown -= 1
+            return
+        
+        # Level adjustment with momentum thresholds and sustained performance requirements
         if len(self.performance_window) >= 3:
             recent_accuracy = sum(self.performance_window[-3:]) / 3
             
-            # Aggressive level jumping for perfect performance
-            if recent_accuracy == 1.0 and len(self.performance_window) >= 4:
-                # Perfect accuracy over 4+ questions: jump 2 levels
-                if self.current_level < 4:
-                    self.current_level += 2
-                    print(f"Level jumped to {self.current_level} (perfect performance)")
-                elif self.current_level < 5:
+            # Upward level adjustments - require sustained performance
+            if recent_accuracy >= 0.9 and self.level_momentum > 1.5:
+                if self.consecutive_successes >= 4 and self.current_level < 5:
+                    # Maximum jump of 1 level at a time (no more 2-level jumps)
                     self.current_level += 1
-                    print(f"Level increased to {self.current_level}")
-            elif recent_accuracy >= 0.8 and self.current_level < 5:
-                self.current_level += 1
-                print(f"Level increased to {self.current_level}")
-            elif recent_accuracy <= 0.3 and self.current_level > 0:
-                self.current_level -= 1
-                print(f"Level decreased to {self.current_level}")
+                    self.level_change_cooldown = self.cooldown_questions
+                    self.level_momentum *= self.momentum_decay  # Reduce momentum after jump
+                    print(f"Level increased to {self.current_level} (excellent performance)")
+            elif recent_accuracy >= 0.75 and self.level_momentum > 0.8:
+                if self.consecutive_successes >= 3 and self.current_level < 5:
+                    self.current_level += 1
+                    self.level_change_cooldown = self.cooldown_questions
+                    self.level_momentum *= self.momentum_decay
+                    print(f"Level increased to {self.current_level} (good performance)")
+            
+            # Early Level 5 promotion for exceptional performers to allow adequate assessment time
+            elif (recent_accuracy >= 0.85 and self.level_momentum > 1.0 and 
+                  self.current_level == 4 and len(self.question_history) <= 10):
+                # Promote to Level 5 earlier if showing strong Level 4 performance
+                if self.consecutive_successes >= 2:
+                    self.current_level += 1
+                    self.level_change_cooldown = 1  # Shorter cooldown for final level
+                    self.level_momentum *= self.momentum_decay
+                    print(f"Level increased to {self.current_level} (strong Level 4 performance - early Level 5 assessment)")
+            
+            # Downward level adjustments - but not from Level 5 easily
+            elif recent_accuracy <= 0.3 and self.level_momentum < -0.8:
+                if self.current_level > 0:
+                    # Make it harder to drop from Level 5 - need sustained poor performance
+                    if self.current_level == 5:
+                        # Only drop from Level 5 if really struggling (need 2 consecutive wrong answers)
+                        if self.consecutive_successes == 0 and len(self.performance_window) >= 4:
+                            recent_errors = len([x for x in self.performance_window[-4:] if x == 0])
+                            if recent_errors >= 3:  # 3 out of last 4 wrong
+                                self.current_level -= 1
+                                self.level_change_cooldown = self.cooldown_questions
+                                self.level_momentum *= self.momentum_decay
+                                print(f"Level decreased to {self.current_level} (sustained difficulties at Level 5)")
+                    else:
+                        # Normal downward adjustment for other levels
+                        self.current_level -= 1
+                        self.level_change_cooldown = self.cooldown_questions
+                        self.level_momentum *= self.momentum_decay
+                        print(f"Level decreased to {self.current_level} (needs support)")
     
     def get_estimated_level(self) -> Dict:
         """Get current estimated level with confidence"""
