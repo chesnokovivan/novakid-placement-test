@@ -74,12 +74,6 @@ class AdaptiveEngine:
             diverse_mechanics = [m for m in category_mechanics if m not in self.recent_mechanics[-2:]]
             mechanics_to_try = diverse_mechanics if diverse_mechanics else category_mechanics
             
-            # Debug: Show mechanic selection process
-            print(f"Category: {'AUDIO' if attempt_audio else 'TEXT'}, Level {self.current_level}")
-            print(f"  Available mechanics: {category_mechanics}")
-            print(f"  Recent mechanics: {self.recent_mechanics[-2:] if len(self.recent_mechanics) >= 2 else self.recent_mechanics}")
-            print(f"  Diverse mechanics: {diverse_mechanics}")
-            print(f"  Mechanics to try: {mechanics_to_try}")
             
             # Also consider preferred mechanics if they overlap
             if preferred_mechanics:
@@ -108,8 +102,6 @@ class AdaptiveEngine:
                 question = random.choice(all_candidates)
                 self.used_questions.add(question['id'])
                 self._track_mechanic_usage(question['mechanic'])
-                # Debug: Show what mechanic was selected
-                print(f"Selected mechanic: {question['mechanic']} at level {question.get('assigned_level', 'unknown')}")
                 return question
         
         return None
