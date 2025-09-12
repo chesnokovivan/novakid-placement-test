@@ -1,2 +1,4 @@
 data/test_results/
 todo.md
+.env
+.streamlit/secrets.toml

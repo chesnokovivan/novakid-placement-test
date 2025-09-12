@@ -3,8 +3,15 @@ import requests
 import streamlit as st
 from typing import Optional
 
-UNSPLASH_CLIENT_ID = "xwkWSFRdhZdVuEu7VrzlW4Qp3RsMDexu7oMvTFcYitA"
-AUDIO_API_BASE = "https://cdn.novakidschool.com/api/0/text_to_speech"
+# API Configuration - use Streamlit secrets in production, fallback to hardcoded for local dev
+try:
+    # Production: Streamlit Community Cloud
+    UNSPLASH_CLIENT_ID = st.secrets["unsplash"]["access_key"]
+    AUDIO_API_BASE = st.secrets["novakid_tts"]["base_url"]
+except (KeyError, AttributeError):
+    # Local development: fallback to current values
+    UNSPLASH_CLIENT_ID = "xwkWSFRdhZdVuEu7VrzlW4Qp3RsMDexu7oMvTFcYitA"
+    AUDIO_API_BASE = "https://cdn.novakidschool.com/api/0/text_to_speech"
 
 @st.cache_data(ttl=3600)
 def get_unsplash_image(query: str) -> Optional[str]:

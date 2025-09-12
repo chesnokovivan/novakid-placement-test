@@ -1,10 +1,17 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
+# Load environment variables for local development
 load_dotenv()
 
-# API Configuration
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+# API Configuration - use Streamlit secrets in production, fallback to env for local dev
+try:
+    # Production: Streamlit Community Cloud
+    GEMINI_API_KEY = st.secrets["gemini"]["api_key"]
+except (KeyError, AttributeError):
+    # Local development: .env file
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 MODEL_NAME = 'gemini-2.5-pro'
 
 # Test Configuration
