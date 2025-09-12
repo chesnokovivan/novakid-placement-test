@@ -185,6 +185,9 @@ def process_answer(answer):
     # Check if test should continue
     if len(st.session_state.test_history) >= QUESTIONS_PER_TEST:
         complete_test()
+        import time
+        time.sleep(1)
+        st.rerun()
         return
     
     # Get next question
@@ -195,6 +198,10 @@ def process_answer(answer):
         st.session_state.answer_submitted = False
     else:
         complete_test()
+        import time
+        time.sleep(1)
+        st.rerun()
+        return
     
     # Brief pause then auto-advance
     import time
@@ -321,7 +328,7 @@ def show_results_screen():
     </div>
     """, unsafe_allow_html=True)
     
-    if st.session_state.test_results:
+    if st.session_state.test_results and 'placement' in st.session_state.test_results:
         placement = st.session_state.test_results['placement']
         
         # Giant level badge
@@ -438,6 +445,28 @@ def show_results_screen():
                     for focus in recs['immediate_focus'][:2]:  # Limit to 2 for kids
                         st.markdown(f"<p style='margin: 10px 0; color: #666;'>📚 {focus}</p>", unsafe_allow_html=True)
     
+    else:
+        # Fallback when analysis fails - show basic results
+        st.warning("⚠️ Analysis still processing, showing basic results...")
+        
+        correct_count = sum(1 for h in st.session_state.test_history if h['correct'])
+        total_questions = len(st.session_state.test_history)
+        accuracy = correct_count / total_questions if total_questions else 0
+        estimated_level = min(5, max(0, int(accuracy * 5)))
+        
+        # Basic level display
+        level_colors = {0: "#FF6B6B", 1: "#4ECDC4", 2: "#45B7D1", 3: "#96CEB4", 4: "#FECA57", 5: "#9B59B6"}
+        level_color = level_colors.get(estimated_level, "#1f77b4")
+        
+        st.markdown(f"""
+        <div style='text-align: center; padding: 30px; background: linear-gradient(135deg, {level_color}22 0%, {level_color}44 100%); 
+                    border-radius: 20px; margin: 20px 0; border: 3px solid {level_color};'>
+            <h1 style='font-size: 4rem; color: {level_color}; margin: 0;'>Level {estimated_level}</h1>
+            <h3 style='color: #333; margin: 10px 0;'>Your English Level</h3>
+            <p style='font-size: 1.2rem; color: #666; margin: 5px 0;'>Based on {accuracy:.0%} accuracy</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
     # Fun test stats for kids
     st.markdown("---")
     st.markdown("<h2 style='text-align: center; color: #1f77b4;'>📊 Your Test Numbers</h2>", unsafe_allow_html=True)
@@ -520,20 +549,25 @@ def main():
         show_welcome_screen()
     
     elif st.session_state.test_completed:
+        # Clear any lingering success messages that might interfere
+        st.empty()
         show_results_screen()
     
     else:
         show_test_interface()
     
-    # Sidebar with debug info (for development)
-    if st.sidebar.checkbox("Show Debug Info"):
+    # Sidebar with debug info (always visible for demo)
+    st.sidebar.markdown("### 🔧 Debug Info")
+    if st.session_state.adaptive_engine:
         st.sidebar.json({
-            "Current Level": st.session_state.adaptive_engine.current_level if st.session_state.adaptive_engine else "N/A",
+            "Current Level": st.session_state.adaptive_engine.current_level,
             "Questions Answered": len(st.session_state.test_history),
-            "Performance Window": st.session_state.adaptive_engine.performance_window if st.session_state.adaptive_engine else [],
+            "Performance Window": st.session_state.adaptive_engine.performance_window,
             "Test Started": st.session_state.test_started,
             "Test Completed": st.session_state.test_completed
         })
+    else:
+        st.sidebar.info("Debug info will appear when test starts")
 
 if __name__ == "__main__":
     main()
