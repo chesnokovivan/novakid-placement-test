@@ -65,8 +65,8 @@
     },
     "sentence-scramble": {
       "min_level": 1,
-      "skills": ["Grammar", "Sentence Structure"],
-      "description": "Put words in correct order to form sentences"
+      "skills": ["Sentence Structure"],
+      "description": "Put words in correct order to form sentences (pure word order, no vocabulary choices)"
     },
     "audio-category-sorting": {
       "min_level": 0,

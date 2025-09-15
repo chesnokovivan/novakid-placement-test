@@ -18,12 +18,24 @@ pip install -r requirements.txt
 python3 generate_questions.py
 ```
 
-### Run Application
+### Run Application Locally
 ```bash
 streamlit run app.py
 
 IMPORTANT: DO NOT RUN THE APP AUTOMATICALLY. I WILL DO IT MANUALLY IN OTHER TERMINAL.
 ```
+
+### Deployment
+The application is configured for deployment on Streamlit Community Cloud:
+
+**Live App**: Available at production URL once deployed via GitHub integration
+**Deployment Config**:
+- `.streamlit/config.toml` - Kid-friendly theme with coral primary color (#FF6B6B)
+- Automatic deployment on git push to main branch
+- Secrets management via Streamlit Cloud dashboard (GEMINI_API_KEY, Unsplash, Novakid TTS)
+- Zero-cost hosting on free tier
+
+**Deployment Guide**: See `DEPLOYMENT.md` for complete setup instructions
 
 ## Architecture
 
@@ -42,6 +54,8 @@ The system follows a modular architecture:
 - **data/curriculum/**: JSON files defining Novakid levels, competencies, grammar topics, and vocabulary
 - **data/questions.json**: Generated question bank organized by level (created by generate_questions.py)
 - **data/test_results/**: Student test results (auto-created during tests, excluded from git via .gitignore)
+- **.streamlit/config.toml**: Streamlit deployment configuration with kid-friendly theme
+- **DEPLOYMENT.md**: Complete Streamlit Community Cloud deployment guide
 
 ### Adaptive Algorithm
 
