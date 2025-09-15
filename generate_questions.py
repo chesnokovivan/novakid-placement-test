@@ -4,9 +4,15 @@ import os
 from google import genai
 from dotenv import load_dotenv
 
-# Load environment variables directly
-load_dotenv(override=True)
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+# For local development, try to load from .env first
+try:
+    load_dotenv(override=True)
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    if not GEMINI_API_KEY or GEMINI_API_KEY == 'your_gemini_api_key_here':
+        raise ValueError("No valid API key in .env")
+except:
+    # Fallback to config system (works for both Streamlit secrets and .env)
+    from config import GEMINI_API_KEY
 
 from config import MODEL_NAME, CURRICULUM_DIR, QUESTIONS_FILE, MVP_MECHANICS
 

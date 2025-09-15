@@ -3,13 +3,9 @@ import json
 import os
 from google import genai
 from typing import Dict, List
-from dotenv import load_dotenv
 
-# Load environment variables directly
-load_dotenv(override=True)
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-
-from config import MODEL_NAME
+# Import API key from config (handles both Streamlit secrets and local .env)
+from config import GEMINI_API_KEY, MODEL_NAME
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
