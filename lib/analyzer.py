@@ -1,8 +1,15 @@
 # Post-test analysis with LLM
 import json
+import os
 from google import genai
 from typing import Dict, List
-from config import GEMINI_API_KEY, MODEL_NAME
+from dotenv import load_dotenv
+
+# Load environment variables directly
+load_dotenv(override=True)
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+from config import MODEL_NAME
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -42,7 +49,7 @@ def analyze_results(test_history: List[Dict], questions: Dict) -> Dict:
 def create_analysis_prompt(test_history: List[Dict], questions: Dict) -> str:
     """Create prompt for LLM analysis"""
     
-    # Enrich history with question details
+    # Enrich history with question details including grammar points
     detailed_history = []
     for item in test_history:
         question = item['question']
@@ -51,6 +58,7 @@ def create_analysis_prompt(test_history: List[Dict], questions: Dict) -> str:
             'level': question.get('assigned_level', 1),
             'mechanic': question['mechanic'],
             'skill': question.get('skill', 'Unknown'),
+            'grammar_point': question.get('grammar_point', 'general'),
             'correct': item['correct'],
             'response_time': item.get('response_time', 0)
         })
@@ -75,10 +83,18 @@ ANALYSIS REQUIREMENTS:
 4. Provide specific recommendations
 
 Consider:
-- Accuracy patterns across different mechanics
+- Accuracy patterns across different mechanics AND skills
 - Performance at different levels
 - Consistency of responses
-- Skills demonstrated
+- Skills demonstrated (Grammar, Sentence Structure, Vocabulary, Pronunciation, etc.)
+- Specific grammar points where student struggled (modal verbs, word order, tenses, etc.)
+
+IMPORTANT ANALYSIS GUIDELINES:
+- sentence-scramble mechanic tests ONLY "Sentence Structure" (word order), NOT grammar choices
+- multiple-choice-text-text tests "Grammar" including modal verbs, verb forms, articles
+- Provide specific recommendations based on actual skills tested, not just mechanic names
+- If student failed "sentence-scramble" → recommend "word order practice"
+- If student failed "multiple-choice-text-text" with "modal verbs" → recommend "modal verb practice"
 
 Return ONLY valid JSON in this exact format:
 {{
@@ -114,22 +130,42 @@ Return ONLY valid JSON in this exact format:
 
 def simple_analysis(test_history: List[Dict]) -> Dict:
     """Fallback rule-based analysis if LLM fails"""
-    
+
     # Calculate basic metrics
     total_questions = len(test_history)
     correct_answers = sum(1 for h in test_history if h['correct'])
     accuracy = correct_answers / total_questions if total_questions > 0 else 0
-    
+
     # Group by level
     level_performance = {}
+    # Group by skill for detailed analysis
+    skill_performance = {}
+    # Track failed grammar points
+    failed_grammar_points = []
+
     for item in test_history:
         level = item['question'].get('assigned_level', 1)
+        skill = item['question'].get('skill', 'Unknown')
+        grammar_point = item['question'].get('grammar_point', 'general')
+
+        # Level performance
         if level not in level_performance:
             level_performance[level] = {'correct': 0, 'total': 0}
         level_performance[level]['total'] += 1
         if item['correct']:
             level_performance[level]['correct'] += 1
-    
+
+        # Skill performance
+        if skill not in skill_performance:
+            skill_performance[skill] = {'correct': 0, 'total': 0}
+        skill_performance[skill]['total'] += 1
+        if item['correct']:
+            skill_performance[skill]['correct'] += 1
+        else:
+            # Track failed grammar points for recommendations
+            if grammar_point != 'general':
+                failed_grammar_points.append(grammar_point)
+
     # Determine placement level
     placement_level = 1
     for level in sorted(level_performance.keys()):
@@ -146,7 +182,49 @@ def simple_analysis(test_history: List[Dict]) -> Dict:
         4: 'B1',
         5: 'B2'
     }
-    
+
+    # Generate skill-specific scores and recommendations
+    skill_scores = {}
+    recommendations = []
+    strengths = []
+
+    for skill, perf in skill_performance.items():
+        skill_accuracy = perf['correct'] / perf['total'] if perf['total'] > 0 else 0
+        skill_scores[skill.lower().replace(' ', '_')] = {
+            "score": skill_accuracy,
+            "evidence": [f"Answered {perf['correct']}/{perf['total']} {skill} questions correctly"]
+        }
+
+        # Generate recommendations based on performance
+        if skill_accuracy < 0.6:
+            if skill == 'Grammar':
+                if failed_grammar_points:
+                    recommendations.extend([f"Practice {point}" for point in set(failed_grammar_points)])
+                else:
+                    recommendations.append("Review grammar fundamentals")
+            elif skill == 'Sentence Structure':
+                recommendations.append("Practice word order and sentence formation")
+            elif skill == 'Vocabulary':
+                recommendations.append("Expand vocabulary through reading and practice")
+            elif skill == 'Pronunciation':
+                recommendations.append("Practice pronunciation with audio materials")
+        else:
+            strengths.append(f"Strong {skill.lower()} skills")
+
+    # Ensure we have the required skill categories
+    required_skills = ['vocabulary', 'pronunciation', 'grammar']
+    for skill in required_skills:
+        if skill not in skill_scores:
+            skill_scores[skill] = {
+                "score": accuracy,
+                "evidence": ["General performance assessment"]
+            }
+
+    if not recommendations:
+        recommendations = ["Continue practicing at current level"]
+    if not strengths:
+        strengths = ["Build on demonstrated skills"]
+
     return {
         "placement": {
             "novakid_level": placement_level,
@@ -154,23 +232,10 @@ def simple_analysis(test_history: List[Dict]) -> Dict:
             "cefr_equivalent": cefr_mapping.get(placement_level, 'A1'),
             "level_justification": f"Overall accuracy {accuracy:.1%} with best performance at Level {placement_level}"
         },
-        "skill_analysis": {
-            "vocabulary": {
-                "score": accuracy,
-                "evidence": [f"Answered {correct_answers}/{total_questions} questions correctly"]
-            },
-            "pronunciation": {
-                "score": accuracy,
-                "evidence": ["Self-assessed pronunciation practice"]
-            },
-            "grammar": {
-                "score": accuracy,
-                "evidence": ["Grammar performance matches overall accuracy"]
-            }
-        },
+        "skill_analysis": skill_scores,
         "recommendations": {
-            "immediate_focus": ["Continue practicing at current level"],
-            "strengths_to_build_on": ["Build on demonstrated skills"],
+            "immediate_focus": recommendations[:3],  # Limit to top 3
+            "strengths_to_build_on": strengths[:3],  # Limit to top 3
             "suggested_starting_point": f"Begin at Novakid Level {placement_level}",
             "estimated_progress": "Progress varies by individual"
         }

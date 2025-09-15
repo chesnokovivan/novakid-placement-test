@@ -1,13 +1,19 @@
 # Media API integrations for real images and audio
 import requests
-import streamlit as st
 from typing import Optional
 
 # API Configuration - use Streamlit secrets in production, fallback to hardcoded for local dev
+import streamlit as st
+
 try:
     # Production: Streamlit Community Cloud
     UNSPLASH_CLIENT_ID = st.secrets["unsplash"]["access_key"]
     AUDIO_API_BASE = st.secrets["novakid_tts"]["base_url"]
+
+    # Check if secrets are just placeholders
+    if AUDIO_API_BASE == "your_novakid_tts_base_url_here":
+        raise KeyError("Placeholder secrets detected")
+
 except (KeyError, AttributeError):
     # Local development: fallback to current values
     UNSPLASH_CLIENT_ID = "xwkWSFRdhZdVuEu7VrzlW4Qp3RsMDexu7oMvTFcYitA"

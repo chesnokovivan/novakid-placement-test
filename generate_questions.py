@@ -2,7 +2,13 @@
 import json
 import os
 from google import genai
-from config import GEMINI_API_KEY, MODEL_NAME, CURRICULUM_DIR, QUESTIONS_FILE, MVP_MECHANICS
+from dotenv import load_dotenv
+
+# Load environment variables directly
+load_dotenv(override=True)
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+from config import MODEL_NAME, CURRICULUM_DIR, QUESTIONS_FILE, MVP_MECHANICS
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -20,7 +26,7 @@ def load_curriculum_data():
 
 def generate_questions_prompt(level, mechanic, curriculum_data):
     """Create prompt for question generation"""
-    levels, competencies, grammar, vocabulary = curriculum_data
+    levels_data, competencies, grammar, vocabulary = curriculum_data
     
     # Filter data for specific level
     level_competencies = [c for c in competencies if c['novakid_level'] == level]
@@ -29,7 +35,7 @@ def generate_questions_prompt(level, mechanic, curriculum_data):
     
     prompt = f"""You are an ESL curriculum expert creating placement test questions for children aged 4-12.
 
-LEVEL: Novakid Level {level} ({levels['levels'][level]['cefr_mapping']})
+LEVEL: Novakid Level {level} ({levels_data['levels'][level]['cefr_mapping']})
 MECHANIC: {mechanic}
 
 CURRICULUM DATA:
@@ -42,6 +48,7 @@ Generate exactly 10 questions for {mechanic} mechanic at Novakid Level {level}.
 QUESTION FORMATS BY MECHANIC:
 
 For 'multiple-choice-text-text':
+Create grammar questions testing verb forms, modal verbs, prepositions, articles, etc. Focus on single word choices.
 {{
   "id": "L{level}_MC_001",
   "mechanic": "multiple-choice-text-text",
@@ -51,6 +58,17 @@ For 'multiple-choice-text-text':
   "skill": "Grammar",
   "difficulty": 0.3,
   "grammar_point": "present simple third person"
+}}
+For modal verbs:
+{{
+  "id": "L{level}_MC_002",
+  "mechanic": "multiple-choice-text-text",
+  "sentence": "You ___ wear a helmet when riding a bike.",
+  "options": ["should", "could", "would", "might"],
+  "correct_answer": 0,
+  "skill": "Grammar",
+  "difficulty": 0.5,
+  "grammar_point": "modal verbs for obligation"
 }}
 
 For 'word-pronunciation-practice':
@@ -102,15 +120,21 @@ For 'sentence-pronunciation-practice':
 }}
 
 For 'sentence-scramble':
+IMPORTANT: This mechanic tests ONLY word order/sentence structure. Do NOT include vocabulary choices or grammar alternatives.
+- sentence_template: Use only underscores "___ ___ ___" (one per word in the complete sentence)
+- word_options: Include ALL words needed to form the complete sentence, with NO extra distractors
+- correct_order: Should be [0, 1, 2, 3, ...] in the correct sequence
+- Example:
 {{
   "id": "L{level}_SS_001",
   "mechanic": "sentence-scramble",
-  "sentence_template": "I ___ to ___ every day",
-  "word_options": ["go", "school", "am", "went"],
-  "correct_order": [0, 1],
-  "skill": "Grammar",
+  "sentence_template": "___ ___ ___ ___ ___ ___",
+  "word_options": ["I", "go", "to", "school", "every", "day"],
+  "correct_order": [0, 1, 2, 3, 4, 5],
+  "skill": "Sentence Structure",
   "difficulty": 0.4,
-  "grammar_point": "sentence structure"
+  "grammar_point": "word order",
+  "full_sentence": "I go to school every day"
 }}
 
 For 'audio-category-sorting':
@@ -145,7 +169,7 @@ Return ONLY a valid JSON array with 10 questions. No additional text."""
 def generate_questions():
     """Generate questions for all levels and mechanics"""
     curriculum_data = load_curriculum_data()
-    levels, _, _, _ = curriculum_data
+    levels_data, _, _, _ = curriculum_data
     
     all_questions = {}
     
@@ -276,12 +300,13 @@ def create_fallback_questions(level, mechanic):
             {
                 "id": f"L{level}_SS_FALLBACK_001",
                 "mechanic": "sentence-scramble",
-                "sentence_template": "I ___ a ___",
-                "word_options": ["am", "student", "is", "teacher"],
-                "correct_order": [0, 1],
-                "skill": "Grammar",
+                "sentence_template": "___ ___ ___ ___",
+                "word_options": ["I", "am", "a", "student"],
+                "correct_order": [0, 1, 2, 3],
+                "skill": "Sentence Structure",
                 "difficulty": 0.3,
-                "grammar_point": "be verb sentence"
+                "grammar_point": "word order",
+                "full_sentence": "I am a student"
             }
         ]
     elif mechanic == 'audio-category-sorting':
