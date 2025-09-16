@@ -202,10 +202,13 @@ def render_audio_image_choice(question: Dict) -> Optional[int]:
                 st.image(image_url, width=200)
             else:
                 st.info(f"📷 {image_desc}")
-            
+
+            # Add clear description under each image option to help when AI images don't match well
+            st.markdown(f"<p style='text-align: center; font-size: 0.9rem; color: #666; margin: 5px 0; font-style: italic;'>{image_desc}</p>", unsafe_allow_html=True)
+
             if st.button(
-                f"Choose {chr(65+i)}", 
-                key=f"audio_img_opt_{question['id']}_{i}", 
+                f"Choose {chr(65+i)}",
+                key=f"audio_img_opt_{question['id']}_{i}",
                 use_container_width=True,
                 type="secondary"
             ):
