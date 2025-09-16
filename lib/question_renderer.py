@@ -465,9 +465,12 @@ def render_audio_category_sorting(question: Dict) -> Optional[Dict]:
             # Real image from Unsplash for category
             image_url = get_unsplash_image(category['image_description'])
             if image_url:
-                st.image(image_url, width=200, caption=category['name'])
+                st.image(image_url, width=200)
             else:
                 st.info(f"📷 {category['image_description']}")
+
+            # Add clear description under the category image to help when AI image doesn't match well
+            st.markdown(f"<p style='text-align: center; font-size: 0.9rem; color: #666; margin: 5px 0; font-style: italic;'>{category['image_description']}</p>", unsafe_allow_html=True)
     
     st.markdown("---")
     
