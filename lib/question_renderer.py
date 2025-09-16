@@ -130,9 +130,12 @@ def render_image_choice(question: Dict) -> Optional[int]:
             # Real image from Unsplash
             image_url = get_unsplash_image(question['image_description'])
             if image_url:
-                st.image(image_url, width=500, caption=question['image_description'])
+                st.image(image_url, width=500)
             else:
                 st.info(f"📷 {question['image_description']}")
+
+            # Add clear description under the image to help when AI image doesn't match well
+            st.markdown(f"<p style='text-align: center; font-size: 1.1rem; color: #666; margin: 10px 0; font-style: italic;'>{question['image_description']}</p>", unsafe_allow_html=True)
         # Mark image as rendered
         st.session_state[image_rendered_key] = True
     else:
