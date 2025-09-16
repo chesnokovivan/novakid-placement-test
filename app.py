@@ -559,10 +559,17 @@ def main():
     # Sidebar with debug info (always visible for demo)
     st.sidebar.markdown("### 🔧 Debug Info")
     if st.session_state.adaptive_engine:
+        # Create a performance history showing all answers (not just the window)
+        if st.session_state.test_history:
+            performance_history = [1 if h['correct'] else 0 for h in st.session_state.test_history]
+        else:
+            performance_history = []
+
         st.sidebar.json({
             "Current Level": st.session_state.adaptive_engine.current_level,
             "Questions Answered": len(st.session_state.test_history),
-            "Performance Window": st.session_state.adaptive_engine.performance_window,
+            "Performance History": performance_history,
+            "Recent Window": st.session_state.adaptive_engine.performance_window,
             "Test Started": st.session_state.test_started,
             "Test Completed": st.session_state.test_completed
         })
