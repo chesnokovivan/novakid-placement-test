@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an AI-powered English placement test system for Novakid (EdTech company). The system uses adaptive testing to determine student English proficiency levels (0-5, mapped to CEFR) through three question mechanics: multiple choice grammar, word pronunciation practice, and image-text matching.
+AI-powered adaptive English placement test for Novakid (EdTech). Determines student proficiency levels (0-5, CEFR-mapped) through 7 question mechanics with real-time difficulty adjustment.
 
 ## Development Commands
 
@@ -18,92 +18,74 @@ pip install -r requirements.txt
 python3 generate_questions.py
 ```
 
-### Run Application Locally
+### Run Application
 ```bash
 streamlit run app.py
-
-IMPORTANT: DO NOT RUN THE APP AUTOMATICALLY. I WILL DO IT MANUALLY IN OTHER TERMINAL.
+# IMPORTANT: DO NOT RUN AUTOMATICALLY. USER RUNS MANUALLY.
 ```
 
 ### Deployment
-The application is configured for deployment on Streamlit Community Cloud:
-
-**Live App**: Available at production URL once deployed via GitHub integration
-**Deployment Config**:
-- `.streamlit/config.toml` - Kid-friendly theme with coral primary color (#FF6B6B)
-- Automatic deployment on git push to main branch
-- Secrets management via Streamlit Cloud dashboard (GEMINI_API_KEY, Unsplash, Novakid TTS)
-- Zero-cost hosting on free tier
-
-**Deployment Guide**: See `DEPLOYMENT.md` for complete setup instructions
+Streamlit Community Cloud configuration:
+- `.streamlit/config.toml` - Kid-friendly theme (coral #FF6B6B)
+- Auto-deploy on git push to main
+- Secrets: GEMINI_API_KEY, Unsplash, Novakid TTS
+- See `DEPLOYMENT.md` for setup
 
 ## Architecture
 
-The system follows a modular architecture:
-
-- **app.py**: Main Streamlit application with kid-friendly UI and results screen
-- **config.py**: Central configuration including API keys, test parameters, and file paths
-- **generate_questions.py**: One-time script to generate question bank using Google Gemini API
-- **lib/adaptive_engine.py**: Core adaptive testing algorithm that adjusts difficulty based on performance
-- **lib/question_renderer.py**: UI components for different question types with duplicate media rendering fixes
-- **lib/media_apis.py**: Integration with Unsplash (images) and Novakid TTS (audio) APIs
-- **lib/analyzer.py**: Post-test analysis using LLM to provide detailed placement recommendations
+### Core Modules
+- **app.py**: Main Streamlit UI with kid-friendly results screen
+- **config.py**: Central config (API keys, test parameters, paths)
+- **generate_questions.py**: Question bank generator (Gemini API)
+- **lib/adaptive_engine.py**: Adaptive algorithm with momentum system
+- **lib/question_renderer.py**: 7 mechanic renderers with session state deduplication
+- **lib/media_apis.py**: Unsplash images + Novakid TTS integration
+- **lib/analyzer.py**: LLM-powered post-test analysis
 
 ### Data Structure
+- **data/curriculum/**: Novakid levels, competencies, grammar, vocab (JSON)
+- **data/questions.json**: Generated question bank by level
+- **data/test_results/**: Test results (gitignored, auto-created)
 
-- **data/curriculum/**: JSON files defining Novakid levels, competencies, grammar topics, and vocabulary
-- **data/questions.json**: Generated question bank organized by level (created by generate_questions.py)
-- **data/test_results/**: Student test results (auto-created during tests, excluded from git via .gitignore)
-- **.streamlit/config.toml**: Streamlit deployment configuration with kid-friendly theme
-- **DEPLOYMENT.md**: Complete Streamlit Community Cloud deployment guide
+## Question Mechanics (7 Types)
 
-### Adaptive Algorithm
+1. **word-pronunciation-practice**: Word + phonetic + image + TTS → speech (75% sim success)
+2. **sentence-pronunciation-practice**: Sentence + phonetic + image + TTS → speech
+3. **audio-single-choice-from-images**: TTS audio → select image (4 options)
+4. **audio-category-sorting**: Multiple TTS → sort into categories (60% pass threshold)
+5. **image-single-choice-from-texts**: Image → select text (4 options)
+6. **multiple-choice-text-text**: Grammar sentence → select option
+7. **sentence-scramble**: Drag-drop words to form sentence
 
-The AdaptiveEngine uses a calibration phase (3 randomized questions across levels with mechanic diversity) followed by performance-responsive adaptive selection. Features include:
+Level 0 = audio only; Levels 1-5 = progressive unlock
 
-- **Category Balance:** 50/50 audio vs text mechanic distribution via coin-flip selection
-- **Mechanic Diversity:** Tracks recent question types to prevent boring streaks
-- **Dynamic Exploration:** High performers (90%+) get expanded level range testing  
-- **Aggressive Progression:** Perfect performance (100% over 4+ questions) triggers 2-level jumps
-- **Ceiling Exploration:** End-test push ensures advanced students get Level 5 assessment
-- **Standard Adjustments:** 80% accuracy (level up), 30% accuracy (level down)
+## Adaptive Algorithm (lib/adaptive_engine.py)
 
-This ensures proper placement from beginners to advanced students while maintaining engaging variety and balanced question types.
+### Calibration (Q1-3): Tests levels 0, 1, 2 sequentially with category balance (50/50 audio/text)
 
-## Key Configuration
+### Adaptive Phase (Q4-15)
+**Momentum System** (-2.0 to +2.0): +0.3 on correct, -0.5 on wrong; tracks consecutive successes
 
-- Uses Google Gemini 2.5 Pro API for question generation and analysis
-- Test length: 15 questions with 5-question performance window
-- Three question mechanics with level-based availability
-- Results analyzed by LLM with rule-based fallback
-- Real media integration: Unsplash API for images, Novakid TTS for audio
-- Kid-friendly UI with colorful themes and celebration elements
+**Level Adjustments** (2Q cooldown):
+- Up: 90%+ (4+ consecutive) or 75%+ (3+ consecutive) → +1 level
+- Early L5: 85%+ at L4 (2+ consecutive, Q≤10) → Level 5
+- Down: 30%- → -1 level (L5 protected: needs 3 of last 4 wrong)
+
+**Progressive Exploration**: Early (±1) → Mid (±2) → End-test ceiling push (85%+ overall)
+**Category Balance**: 50/50 audio/text via coin-flip | **Diversity**: Avoids last 2 mechanics
+**Windows**: 5Q recent accuracy, 3Q for adjustments, full history for confidence
 
 ## UI Features
 
-### Question Rendering
-- **Media Integration**: Real images from Unsplash API, audio from Novakid TTS
-- **Duplicate Prevention**: Session state flags prevent media re-rendering on button clicks
-- **Responsive Design**: Large buttons and clear fonts optimized for children
-- **Visual Feedback**: Immediate feedback with colorful success/error messages
+**Question Rendering**: Session state flags prevent media re-rendering | Unsplash images + Novakid TTS | Large buttons, clear fonts | Image description fallbacks
 
-### Results Screen
-- **Celebration Design**: Big emojis, colorful badges, and achievement unlocks
-- **Level Visualization**: Color-coded level badges (Level 0-5) with gradient backgrounds
-- **Skill Assessment**: Star ratings and achievement badges for Vocabulary, Pronunciation, Grammar
-- **Kid-Friendly Language**: Technical analysis transformed into encouraging, age-appropriate descriptions
-- **Visual Progress**: Animated progress bars showing test performance
+**Results Screen**: Celebration UI with emojis/badges | Color-coded level badges (0-5) | Skill stars (Vocab/Pronunciation/Grammar) | Kid-friendly language
 
 ## Dependencies
 
-- **streamlit**: Web UI framework
-- **google-genai**: Google Gemini API client
-- **python-dotenv**: Environment variable management
-- **requests**: HTTP requests for media APIs
+- **streamlit**: Web framework
+- **google-genai**: Gemini 2.5 Pro API
+- **python-dotenv**: Env management
+- **requests**: Media API calls
 
-Requires GEMINI_API_KEY in .env file for LLM functionality.
-
-## Media APIs
-
-- **Unsplash API**: Provides real images for vocabulary questions (CLIENT_ID configured in lib/media_apis.py)
-- **Novakid TTS API**: Generates pronunciation audio for target words
+Requires `GEMINI_API_KEY` in `.env`

@@ -1,7 +1,7 @@
 # Post-test analysis with LLM
 import json
 import os
-from google import genai
+import google.genai as genai
 from typing import Dict, List
 
 # Import API key from config (handles both Streamlit secrets and local .env)
