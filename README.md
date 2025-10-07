@@ -2,6 +2,70 @@
 
 An intelligent placement test system for Novakid that determines student English proficiency levels (0-5) through adaptive testing. The system uses AI to adjust question difficulty in real-time based on student performance.
 
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+- Git
+
+### Local Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone git@bitbucket.org:novakidschool/placement-test-poc.git
+   cd placement-test-poc
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configure API key**
+   - Create a `.env` file in the root directory
+   - Add your Gemini API key:
+     ```
+     GEMINI_API_KEY="your-api-key-here"
+     ```
+
+4. **Generate question bank** (first time only)
+   ```bash
+   python3 generate_questions.py
+   ```
+
+5. **Run the application**
+   ```bash
+   streamlit run app.py
+   ```
+   The app will open in your browser at `http://localhost:8501`
+
+### Streamlit Cloud Deployment
+
+1. **Prepare GitHub repository**
+   - Push your code to GitHub (Streamlit Cloud currently integrates best with GitHub)
+   - Ensure `.streamlit/config.toml` is in your repo
+
+2. **Deploy on Streamlit Cloud**
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Sign in with GitHub
+   - Click "New app"
+   - Select your repository, branch (main), and main file (app.py)
+
+3. **Configure secrets**
+   - In your app settings, go to "Secrets"
+   - Add your API keys:
+     ```toml
+     GEMINI_API_KEY = "your-api-key-here"
+     ```
+
+4. **Deploy**
+   - Click "Deploy"
+   - Your app will be live at `https://[your-app-name].streamlit.app`
+   - Auto-deploys on every push to main branch
+
+**Note**: The question bank (`data/questions.json`) must be generated locally and committed to the repo before deployment.
+
 ## How the Adaptive Engine Works
 
 ### 🎯 Smart Calibration Phase
