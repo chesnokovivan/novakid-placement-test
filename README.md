@@ -28,13 +28,9 @@ An intelligent placement test system for Novakid that determines student English
      ```
      GEMINI_API_KEY="your-api-key-here"
      ```
+   - **Note**: The question bank is already pre-generated and included in the repository under `data/questions.json`
 
-4. **Generate question bank** (first time only)
-   ```bash
-   python3 generate_questions.py
-   ```
-
-5. **Run the application**
+4. **Run the application**
    ```bash
    streamlit run app.py
    ```
@@ -63,8 +59,6 @@ An intelligent placement test system for Novakid that determines student English
    - Click "Deploy"
    - Your app will be live at `https://[your-app-name].streamlit.app`
    - Auto-deploys on every push to main branch
-
-**Note**: The question bank (`data/questions.json`) must be generated locally and committed to the repo before deployment.
 
 ## How the Adaptive Engine Works
 
